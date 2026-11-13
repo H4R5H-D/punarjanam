@@ -1,0 +1,59 @@
+{
+  "formats": [
+    {
+      "name": "Single session",
+      "length": "90 minutes",
+      "price": "",
+      "for": "You have one free morning in Rishikesh.",
+      "detail": "Gentle asana, pranayama, a short meditation and deep relaxation by the Ganga."
+    },
+    {
+      "name": "Two-session experience",
+      "length": "Two mornings",
+      "price": "",
+      "for": "You're here for a weekend.",
+      "detail": "The first morning settles you in. The second goes a little deeper into breath and stillness."
+    },
+    {
+      "name": "Five-session pack",
+      "length": "As many mornings as you like",
+      "price": "",
+      "for": "You're staying a week or longer.",
+      "detail": "Come on the days that suit you. Each session builds on the last."
+    },
+    {
+      "name": "Private session",
+      "length": "60 or 90 minutes",
+      "price": "",
+      "for": "You'd like it to be just you, or your group.",
+      "detail": "Shaped around your body, your pace and what you want from the time."
+    }
+  ],
+  "schedule": [],
+  "faq": [
+    {
+      "q": "I've never done yoga. Can I join?",
+      "a": "Yes. Most people who come have little or no experience. Every session is guided and you can rest whenever you like."
+    },
+    {
+      "q": "Can I join for just one day?",
+      "a": "Yes. Drop-in sessions are made for people visiting Rishikesh for a day or two. Book a single session on WhatsApp."
+    },
+    {
+      "q": "What are the timings and prices?",
+      "a": "Sessions are arranged around your plans, so timing and price depend on the format and group size. Message on WhatsApp and you'll get the next available session, the timing and the meeting point."
+    },
+    {
+      "q": "Do I need to bring a mat?",
+      "a": "No. Mats and blankets are provided. Wear comfortable clothes and bring water."
+    },
+    {
+      "q": "Where do sessions happen?",
+      "a": "By the Ganga in Rishikesh. Timings and the exact meeting point are arranged with you on WhatsApp or a quick call, around your plans."
+    },
+    {
+      "q": "Do you offer teacher training or certificates?",
+      "a": "No. Punarjanma offers experiences, not courses or certifications."
+    }
+  ]
+}

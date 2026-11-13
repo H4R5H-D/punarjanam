@@ -1,0 +1,175 @@
+[
+  {
+    "slug": "three-days-by-the-ganga",
+    "title": "Three days by the Ganga",
+    "length": "3 days, 2 nights",
+    "line": "A short, unhurried pause for people who don't have long.",
+    "dates": [],
+    "price": "Shared on enquiry",
+    "group": "Up to 10 people",
+    "image": "retreat-3day.jpg",
+    "summary": "Three days are enough to notice a different rhythm. Mornings begin at the river, days move slowly, and evenings end with kirtan. There's time to practise and time to do nothing at all.",
+    "itinerary": [
+      {
+        "title": "Arrive and settle",
+        "items": [
+          "Arrive by early afternoon and settle into your room",
+          "Gentle evening practice by the river",
+          "Shared vegetarian dinner",
+          "Kirtan to close the day"
+        ]
+      },
+      {
+        "title": "River, fire and forest",
+        "items": [
+          "Early morning Ganga dip (optional)",
+          "Morning yoga and pranayama",
+          "Havan with a local pandit",
+          "Afternoon nature walk",
+          "Free evening to explore"
+        ]
+      },
+      {
+        "title": "Closing",
+        "items": [
+          "Sunrise meditation",
+          "Morning practice",
+          "Closing circle",
+          "Lunch together and departure"
+        ]
+      }
+    ],
+    "inclusions": [
+      "2 nights' accommodation",
+      "All vegetarian meals",
+      "All yoga sessions and meditations",
+      "Havan and kirtan",
+      "Guided nature walk",
+      "Mats and props"
+    ],
+    "exclusions": [
+      "Travel to and from Rishikesh",
+      "Personal expenses",
+      "Travel insurance"
+    ],
+    "accommodation": "A simple, clean guesthouse a short walk from the river, with shared or private rooms, hot water and a quiet garden. Comfortable, not luxurious."
+  },
+  {
+    "slug": "five-days-a-different-rhythm",
+    "title": "Five days, a different rhythm",
+    "length": "5 days, 4 nights",
+    "line": "Enough time to slow down properly and get to know Rishikesh.",
+    "dates": [],
+    "price": "Shared on enquiry",
+    "group": "Up to 10 people",
+    "image": "retreat-5day.jpg",
+    "summary": "Five days give you room to settle in. Alongside daily practice there's the river, fire ritual, music, long walks and slow meals together, with afternoons left open for you.",
+    "itinerary": [
+      {
+        "title": "Arrive and settle",
+        "items": [
+          "Arrival and welcome",
+          "Gentle evening practice",
+          "Shared dinner"
+        ]
+      },
+      {
+        "title": "The river",
+        "items": [
+          "Early morning Ganga dip (optional)",
+          "Morning yoga and pranayama",
+          "Afternoon at leisure",
+          "Evening meditation"
+        ]
+      },
+      {
+        "title": "Fire and music",
+        "items": [
+          "Morning practice",
+          "Havan with a local pandit",
+          "Walk through old Rishikesh",
+          "Evening kirtan"
+        ]
+      },
+      {
+        "title": "Into the hills",
+        "items": [
+          "Sunrise practice",
+          "Half-day nature walk with a packed lunch",
+          "Restorative evening session"
+        ]
+      },
+      {
+        "title": "Closing",
+        "items": [
+          "Final morning practice",
+          "Closing circle",
+          "Lunch together and departure"
+        ]
+      }
+    ],
+    "inclusions": [
+      "4 nights' accommodation",
+      "All vegetarian meals",
+      "Daily yoga and meditation",
+      "Havan and kirtan",
+      "Guided nature walks",
+      "Local Rishikesh walk",
+      "Mats and props"
+    ],
+    "exclusions": [
+      "Travel to and from Rishikesh",
+      "Personal expenses",
+      "Travel insurance"
+    ],
+    "accommodation": "A simple, comfortable guesthouse near the Ganga. Shared and private rooms available."
+  },
+  {
+    "slug": "womens-circle",
+    "title": "Women's circle",
+    "length": "3 days, 2 nights",
+    "line": "A small retreat for women, held gently.",
+    "dates": [],
+    "price": "Shared on enquiry",
+    "group": "Up to 8 women",
+    "image": "retreat-women.jpg",
+    "summary": "A quiet, small-group retreat for women, with gentle practice, the river, shared meals and conversation. Dates are set when a group comes together, so tell us when you'd like to come.",
+    "itinerary": [
+      {
+        "title": "Arrive",
+        "items": [
+          "Welcome and opening circle",
+          "Gentle evening practice",
+          "Dinner together"
+        ]
+      },
+      {
+        "title": "Together",
+        "items": [
+          "Morning practice by the Ganga",
+          "Nature walk",
+          "Havan",
+          "Evening kirtan"
+        ]
+      },
+      {
+        "title": "Closing",
+        "items": [
+          "Morning meditation",
+          "Closing circle",
+          "Lunch and departure"
+        ]
+      }
+    ],
+    "inclusions": [
+      "2 nights' accommodation",
+      "All vegetarian meals",
+      "All sessions and experiences"
+    ],
+    "exclusions": [
+      "Travel to and from Rishikesh",
+      "Personal expenses"
+    ],
+    "accommodation": "A simple guesthouse near the river, women-only floor."
+  }
+]
