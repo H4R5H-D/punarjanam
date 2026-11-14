@@ -2,3 +2,7 @@ __pycache__/
 *.pyc
 .DS_Store
 .vercel
+
+# Client brief and internal notes: local only (this repo is public)
+brief/
+docs/

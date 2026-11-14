@@ -2,12 +2,11 @@
 
 > Drop-in yoga sessions and small curated retreats in Rishikesh, India, for travellers and beginners. No teacher training or certification.
 
-- [Home](https://punarjanma.com/index.html)
-- [Drop-in yoga](https://punarjanma.com/drop-in-yoga.html)
-- [Retreats](https://punarjanma.com/retreats.html)
-- [About](https://punarjanma.com/about.html)
-- [Gallery](https://punarjanma.com/gallery.html)
-- [Contact](https://punarjanma.com/contact.html)
-- [Three days by the Ganga](https://punarjanma.com/retreats/three-days-by-the-ganga.html): 3 days, 2 nights, Shared on enquiry
-- [Five days, a different rhythm](https://punarjanma.com/retreats/five-days-a-different-rhythm.html): 5 days, 4 nights, Shared on enquiry
-- [Women's circle](https://punarjanma.com/retreats/womens-circle.html): 3 days, 2 nights, Shared on enquiry
+- [Home](https://h4r5h-d.github.io/punarjanam/index.html)
+- [Drop-in yoga](https://h4r5h-d.github.io/punarjanam/drop-in-yoga.html)
+- [Retreats](https://h4r5h-d.github.io/punarjanam/retreats.html)
+- [About](https://h4r5h-d.github.io/punarjanam/about.html)
+- [Contact](https://h4r5h-d.github.io/punarjanam/contact.html)
+- [Three days by the Ganga](https://h4r5h-d.github.io/punarjanam/retreats/three-days-by-the-ganga.html): 3 days, 2 nights, Shared on enquiry
+- [Five days, a different rhythm](https://h4r5h-d.github.io/punarjanam/retreats/five-days-a-different-rhythm.html): 5 days, 4 nights, Shared on enquiry
+- [Women's circle](https://h4r5h-d.github.io/punarjanam/retreats/womens-circle.html): 3 days, 2 nights, Shared on enquiry

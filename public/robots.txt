@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://punarjanma.com/sitemap.xml
+Sitemap: https://h4r5h-d.github.io/punarjanam/sitemap.xml
