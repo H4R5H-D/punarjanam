@@ -1,4 +1,4 @@
-# Punarjanma by Yogini Maansi — website
+# Punarjanam by Yogini Maansi — website
 
 Static site. No framework, no database, nothing to break.
 Live at https://h4r5h-d.github.io/punarjanam/ (GitHub Pages, `gh-pages` branch).
@@ -26,6 +26,10 @@ In `src/static/images/`. Resize to about 2000px wide before adding.
 - Landscapes (`retreat-*.jpg`) are openly licensed Wikimedia Commons photos, credited on the page.
   Replace them with her own photos whenever she sends them.
 - `src/media-archive/` holds v1 media that is no longer published (lawn videos, the old hero).
+- Home hero: `hero.jpg`. Experience tiles: the file names in `TILES` in `src/build.py`
+  (`exp-*.jpg`, 3:2). A tile shows as a text card until its file exists.
+- Logo: `logo-gold.png` / `logo-dark.png` (header), `logo-stacked-gold.png` (footer), `favicon.png`.
+- Design rules and colour tokens: `DESIGN.md`.
 
 ## Domain
 When she buys a domain: set `domain` in `site.json`, rebuild, add a `CNAME` file to `public/`,

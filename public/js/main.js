@@ -73,7 +73,7 @@
         if (bad && ok) { f.focus(); ok = false; }
       });
       if (!ok) return;
-      var d = new FormData(form), lines = ['Hello Punarjanma,'];
+      var d = new FormData(form), lines = ['Hello Punarjanam,'];
       lines.push('I\'m ' + d.get('name') + '.');
       lines.push('I\'m interested in: ' + d.get('interest') + '.');
       if (d.get('dates')) lines.push('Dates: ' + d.get('dates'));
