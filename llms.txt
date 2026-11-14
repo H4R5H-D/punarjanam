@@ -1,12 +1,12 @@
-# Punarjanma by Yogini Maansi
+# Punarjanam by Yogini Maansi
 
 > Drop-in yoga sessions and small curated retreats in Rishikesh, India, for travellers and beginners. No teacher training or certification.
 
-- [Home](https://h4r5h-d.github.io/punarjanam/index.html)
-- [Drop-in yoga](https://h4r5h-d.github.io/punarjanam/drop-in-yoga.html)
-- [Retreats](https://h4r5h-d.github.io/punarjanam/retreats.html)
-- [About](https://h4r5h-d.github.io/punarjanam/about.html)
-- [Contact](https://h4r5h-d.github.io/punarjanam/contact.html)
+- [Home](https://h4r5h-d.github.io/punarjanam/)
+- [drop-in-yoga.html](https://h4r5h-d.github.io/punarjanam/drop-in-yoga.html)
+- [retreats.html](https://h4r5h-d.github.io/punarjanam/retreats.html)
+- [about.html](https://h4r5h-d.github.io/punarjanam/about.html)
+- [contact.html](https://h4r5h-d.github.io/punarjanam/contact.html)
 - [Three days by the Ganga](https://h4r5h-d.github.io/punarjanam/retreats/three-days-by-the-ganga.html): 3 days, 2 nights, Shared on enquiry
 - [Five days, a different rhythm](https://h4r5h-d.github.io/punarjanam/retreats/five-days-a-different-rhythm.html): 5 days, 4 nights, Shared on enquiry
 - [Women's circle](https://h4r5h-d.github.io/punarjanam/retreats/womens-circle.html): 3 days, 2 nights, Shared on enquiry
