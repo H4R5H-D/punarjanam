@@ -14,6 +14,7 @@
   --gold: #C2A56B;         /* logo artwork and footer ornaments only */
   --ivory-dim: #DCD6C6;    /* text on dark */
   --error: #8A3B26;        /* form errors only */
+  --dawn: #F1E7D6;         /* Three-Day Retreat identity */
 
   --serif: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -90,9 +91,9 @@ section.flush { padding-top: 0; }
 .site-header { position: sticky; top: 0; z-index: 50; background: rgba(245, 241, 232, .95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); transition: background .3s var(--ease), border-color .3s var(--ease); }
 .site-header .bar { display: flex; align-items: center; justify-content: space-between; height: var(--header); }
 .brand { text-decoration: none; display: grid; justify-items: start; line-height: 1; }
-.brand img { height: 30px; width: auto; grid-area: 1 / 1; }
+.brand img { height: 34px; width: auto; grid-area: 1 / 1; }
 .brand .logo-light { visibility: hidden; }
-.brand span { font: 500 .5625rem/1 var(--sans); letter-spacing: .24em; text-transform: uppercase; margin: .5rem 0 0 2.5rem; color: var(--muted); }
+.brand span { font: 500 .5625rem/1 var(--sans); letter-spacing: .24em; text-transform: uppercase; margin: .5rem 0 0 2.75rem; color: var(--muted); }
 .nav { display: flex; gap: 2rem; align-items: center; }
 .nav a:not(.btn) { text-decoration: none; font-size: .875rem; padding-block: .5rem; border-bottom: 1px solid transparent; }
 .nav a:not(.btn):hover, .nav a[aria-current="page"] { border-bottom-color: currentColor; }
@@ -100,8 +101,8 @@ section.flush { padding-top: 0; }
 .nav .btn.line:hover { color: var(--ivory); }
 .menu-btn { display: none; background: none; border: 0; color: var(--walnut); width: 48px; height: 48px; cursor: pointer; padding: 0; margin-right: -10px; }
 .menu-btn svg { width: 26px; height: 26px; }
-body.has-hero .site-header { position: fixed; inset: 0 0 auto; background: linear-gradient(180deg, rgba(28, 24, 18, .7), rgba(28, 24, 18, .25) 70%, rgba(28, 24, 18, 0)); border-bottom-color: transparent; backdrop-filter: none; }
-body.has-hero .site-header .logo-light { visibility: visible; filter: drop-shadow(0 1px 8px rgba(0, 0, 0, .55)); }
+body.has-hero .site-header { position: fixed; inset: 0 0 auto; background: rgba(28, 24, 18, .42); border-bottom-color: rgba(245, 241, 232, .12); backdrop-filter: blur(10px) saturate(110%); -webkit-backdrop-filter: blur(10px) saturate(110%); }
+body.has-hero .site-header .logo-light { visibility: visible; filter: drop-shadow(0 1px 4px rgba(0, 0, 0, .45)); }
 body.has-hero .site-header .logo-dark { visibility: hidden; }
 body.has-hero .site-header .brand span, body.has-hero .site-header .nav a:not(.btn), body.has-hero .site-header .menu-btn { color: var(--ivory); }
 body.has-hero .site-header .nav .btn.line { color: var(--ivory); border-color: rgba(245, 241, 232, .85); }
@@ -138,7 +139,6 @@ body.has-hero .site-header.solid .nav .btn.line { color: var(--walnut); border-c
   .hero { min-height: 86svh; align-items: end; }
   .hero-img { object-position: 30% center; }
   .hero::before { background: linear-gradient(180deg, rgba(30, 24, 16, .35) 0%, rgba(30, 24, 16, .2) 22%, rgba(30, 24, 16, .5) 45%, rgba(30, 24, 16, .78) 100%); }
-  body.has-hero .site-header:not(.solid) { background: linear-gradient(180deg, rgba(28, 24, 18, .8), rgba(28, 24, 18, .35) 75%, rgba(28, 24, 18, 0)); }
 }
 @media (prefers-reduced-motion: no-preference) { .hero-img { animation: fade-in .3s ease-out both; } }
 @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
@@ -172,24 +172,19 @@ body.has-hero .site-header.solid .nav .btn.line { color: var(--walnut); border-c
 .philo-img img, .about-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 @media (max-width: 860px) { .philo { grid-template-columns: 1fr; } .philo-img { min-height: 300px; } }
 
-/* Experiences: intro on the left, six tiles on the right */
-.exps-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.6fr); gap: 3.5rem; align-items: center; }
-.exps-intro h2 { margin-bottom: 1.25rem; max-width: 12ch; }
 .exps-intro .eyebrow::after, .about-text .eyebrow::after { content: ""; display: inline-block; width: 40px; height: 1px; background: currentColor; vertical-align: middle; margin-left: .75rem; opacity: .6; }
-.exps-intro .btn { margin-top: 1rem; }
 .tiles { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; }
 .tile { position: relative; display: block; aspect-ratio: 3 / 2; overflow: hidden; text-decoration: none; color: var(--ivory); background: var(--olive); }
 .tile img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s var(--ease); }
 .tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(30, 24, 16, 0) 45%, rgba(30, 24, 16, .65)); }
 .tile:hover img { transform: scale(1.04); }
-.tile-t { position: absolute; left: 1rem; bottom: .75rem; z-index: 1; font: 400 1.35rem/1.15 var(--serif); }
+.tile-t { position: absolute; left: 1rem; right: 1rem; bottom: .75rem; z-index: 1; font: 400 1.35rem/1.15 var(--serif); }
 .tile.text { background: var(--sage); color: var(--walnut); display: flex; flex-direction: column; justify-content: flex-end; padding: 1rem; transition: background .3s var(--ease); }
 .tile.text::after { content: none; }
 .tile.text:hover { background: var(--sage-deep); }
 .tile.text .tile-t { position: static; }
 .tile-n { position: absolute; top: 1rem; left: 1rem; font: italic 400 .95rem/1 var(--serif); color: var(--olive-ink); }
 .tile-d { font-size: .8125rem; line-height: 1.4; color: var(--muted); margin-top: .25rem; }
-@media (max-width: 980px) { .exps-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
 @media (max-width: 560px) { .tiles { grid-template-columns: 1fr 1fr; gap: .5rem; } .tile-t { font-size: 1.15rem; left: .75rem; bottom: .5rem; } .tile.text { padding: .75rem; } .tile-n { left: .75rem; top: .75rem; } .tile-d { display: none; } }
 
 /* About band: photo left, text on sage right */
@@ -205,7 +200,7 @@ body.has-hero .site-header.solid .nav .btn.line { color: var(--walnut); border-c
 /* Closing band over a misty photo */
 .closing { position: relative; padding: clamp(6rem, 14vw, 10rem) 0; text-align: center; color: var(--ivory); overflow: hidden; }
 .closing-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.closing::before { content: ""; position: absolute; inset: 0; z-index: 1; background: rgba(40, 34, 26, .45); }
+.closing::before { content: ""; position: absolute; inset: 0; z-index: 1; background: rgba(40, 34, 26, .58); }
 .closing-text { position: relative; z-index: 2; }
 .closing h2 { font: italic 300 clamp(1.9rem, 3.8vw, 3.2rem)/1.25 var(--serif); max-width: 26ch; margin: 0 auto; text-shadow: 0 2px 20px rgba(0, 0, 0, .3); }
 .closing p { margin: 1.25rem auto 2rem; font: 400 1.2rem/1.5 var(--serif); max-width: none; }
@@ -352,5 +347,100 @@ body.has-hero .site-header.solid .nav .btn.line { color: var(--walnut); border-c
 }
 .wa-float:hover { background: var(--walnut); }
 .wa-float svg { width: 24px; height: 24px; }
+
+/* ---------- Offerings (v4) ---------- */
+.h-sm { font-size: clamp(1.6rem, 2.4vw, 2rem); margin-bottom: 1.5rem; }
+.gap-top { margin-top: 3rem; }
+.sec-head { max-width: 46rem; margin-bottom: 3rem; }
+.sec-head h2 { margin-bottom: 1rem; }
+.sec-head p:last-child { color: var(--muted); }
+.actions.center { justify-content: center; }
+.themes { font: 500 .6875rem/1.4 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--olive-ink); margin: 0 0 1rem; }
+.themes i { font-style: normal; margin: 0 .25rem; color: var(--gold); }
+.ticks { list-style: none; padding: 0; margin: 0; }
+.ticks li { position: relative; padding: .75rem 0 .75rem 1.75rem; border-top: 1px solid var(--line); }
+.ticks li::before { content: ""; position: absolute; left: .25rem; top: 1.25rem; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+
+/* Yoga Experiences: photo + text */
+.offer-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 4rem; align-items: center; }
+.offer-img { margin: 0; }
+.offer-img img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.offer-text h2 { margin-bottom: 1.25rem; max-width: 14ch; }
+@media (max-width: 860px) { .offer-grid { grid-template-columns: 1fr; gap: 2rem; } }
+
+/* Signature Experiences: two retreat cards, each with its own identity */
+.signature { background: var(--tint); }
+.rcards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.rcard { display: grid; grid-template-rows: auto 1fr; }
+.rcard-img { display: block; overflow: hidden; }
+.rcard-img img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; transition: transform .3s var(--ease); }
+.rcard-img:hover img { transform: scale(1.03); }
+.rcard-body { padding: 2rem 2rem 2.5rem; }
+.rcard h3 { font-size: clamp(1.75rem, 2.6vw, 2.25rem); }
+.rcard h3 a { text-decoration: none; }
+.rcard-line { font: italic 400 1.25rem/1.45 var(--serif); margin: .75rem 0 1.75rem; }
+.rcard-dawn { background: var(--dawn); }
+.rcard-forest { background: var(--forest); color: var(--ivory); }
+.rcard-forest .themes { color: var(--ivory-dim); }
+.rcard-forest .btn.line { color: var(--ivory); border-color: rgba(245, 241, 232, .8); }
+.rcard-forest .btn.line:hover { background: var(--ivory); color: var(--walnut); }
+@media (max-width: 760px) { .rcards { grid-template-columns: 1fr; } .rcard-body { padding: 1.5rem 1.25rem 2rem; } }
+
+/* Spiritual Experiences: tiles on home, cards on the listing page */
+.tiles.five { grid-template-columns: repeat(5, 1fr); }
+.tiles.four { grid-template-columns: repeat(4, 1fr); }
+.tiles.five .tile, .tiles.four .tile { aspect-ratio: 4 / 5; }
+.spiritual .actions { margin-top: 2.5rem; }
+@media (max-width: 980px) { .tiles.five, .tiles.four { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 560px) { .tiles.five, .tiles.four { grid-template-columns: 1fr 1fr; } }
+.scards { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.scard { background: var(--tint); display: grid; grid-template-rows: auto 1fr; outline: 2px solid transparent; outline-offset: -2px; transition: outline-color .2s var(--ease); }
+.scard.picked { outline-color: var(--olive-ink); }
+.scard-img { display: block; overflow: hidden; }
+.scard-img img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.scard-body { padding: 1.5rem; display: flex; flex-direction: column; }
+.scard h2 { font-size: 1.6rem; margin-bottom: .5rem; }
+.scard h2 a { text-decoration: none; }
+.scard-body > p { color: var(--muted); }
+.scard-foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; padding-top: 1rem; border-top: 1px solid var(--line); }
+.pick { display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; cursor: pointer; font-size: .875rem; font-weight: 500; }
+.pick input { width: 20px; height: 20px; accent-color: var(--olive-ink); margin: 0; }
+@media (max-width: 980px) { .scards { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .scards { grid-template-columns: 1fr; } }
+.combine-bar { position: fixed; left: 50%; bottom: 1.25rem; transform: translateX(-50%); z-index: 45; display: flex; align-items: center; gap: 1.5rem; padding: .75rem .75rem .75rem 1.5rem; background: var(--walnut); color: var(--ivory); box-shadow: 0 4px 16px rgba(40, 38, 32, .2); width: max-content; max-width: calc(100% - 2rem); }
+.combine-bar[hidden] { display: none; }
+.combine-count { margin: 0; font-size: .875rem; }
+.combine-bar .btn { background: var(--ivory); color: var(--walnut); border-color: var(--ivory); }
+.combine-bar .btn:hover { background: var(--sage); border-color: var(--sage); }
+body.combining .wa-float { display: none; }
+@media (max-width: 560px) { .combine-bar { left: 1rem; right: 1rem; transform: none; width: auto; justify-content: space-between; gap: .75rem; padding-left: 1rem; } }
+
+/* Spiritual experience page */
+.page-intro.slim { padding-block: 2rem 1.5rem; }
+.sx { display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: start; }
+.sx-img { margin: 0; position: sticky; top: calc(var(--header) + 1.5rem); }
+.sx-img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.sx-text h1 { font-size: clamp(2.5rem, 4.6vw, 4rem); }
+.sx-text .lede { margin-bottom: 1.5rem; }
+.sx-text .h-sm { margin-top: 2.5rem; }
+.facts.compact { grid-template-columns: repeat(3, 1fr); margin-top: 2.5rem; }
+@media (max-width: 860px) { .sx { grid-template-columns: 1fr; gap: 2rem; } .sx-img { position: static; } .facts.compact { grid-template-columns: 1fr; } }
+
+/* Retreat pages: identity bands */
+.page-intro.id-dawn, .statement.id-dawn { background: var(--dawn); }
+.page-intro.id-forest, .statement.id-forest { background: var(--forest); color: var(--ivory); }
+.id-forest .crumb, .id-forest .themes, .id-forest .eyebrow { color: var(--ivory-dim); }
+.page-intro.id-dawn h1, .page-intro.id-forest h1 { max-width: 18ch; }
+.includes { list-style: none; padding: 0; margin: 0; counter-reset: inc; }
+.includes li { counter-increment: inc; display: grid; grid-template-columns: 3rem 1fr; column-gap: 1rem; padding: 1.25rem 0; border-top: 1px solid rgba(64, 61, 52, .25); }
+.includes li::before { content: counter(inc, decimal-leading-zero); grid-row: span 2; font: italic 400 1.25rem/1.2 var(--serif); color: var(--olive-ink); }
+.includes h3 { font-size: 1.4rem; margin-bottom: .25rem; }
+.includes p { margin: 0; color: var(--muted); }
+.statement { text-align: center; }
+.statement-text { font: italic 300 clamp(1.6rem, 3vw, 2.4rem)/1.4 var(--serif); max-width: 34ch; margin: 0 auto; }
+.facts { margin-top: 2rem; }
+
+/* About: tall portrait beneath Adiyogi */
+.story img.tall { object-position: center 78%; }
 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }

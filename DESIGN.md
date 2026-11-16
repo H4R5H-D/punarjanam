@@ -12,6 +12,7 @@ and Harsh's approved mockup (14 Nov 2026).
 | `--sage` | #D8DDCE | experience cards, about band |
 | `--sage-deep` | #CDD3C1 | sage hover |
 | `--error` | #8A3B26 | form errors only (status colour) |
+| `--dawn` | #F1E7D6 | Three-Day Retreat identity (Five-Day uses `--forest`) |
 | `--olive` | #777F65 | large type, rules only |
 | `--olive-ink` | #5C6450 | **the one accent**: buttons, links, small labels |
 | `--sand` | #C7B49A | underlines |

@@ -12,7 +12,8 @@ That regenerates `public/`. Publish by copying `public/` onto the `gh-pages` bra
 
 - `site.json` — WhatsApp number (country code, no +), Instagram handle, live domain
 - `sessions.json` — drop-in formats, prices, FAQs
-- `retreats.json` — each retreat becomes its own page at /retreats/<slug>.html
+- `retreats.json` — Punarjanam Signature Experiences: section intro, common elements, stay photos, and each retreat (page at /retreats/<slug>.html; `old_slug` keeps old links working)
+- `spiritual.json` — Spiritual Experiences: each becomes /spiritual/<slug>.html; the listing page lets visitors tick several and send one WhatsApp enquiry. Copy is a DRAFT until Maansi replaces it
 - `gallery.json` — empty for now. **The Gallery page and its menu link appear automatically**
   once it lists photos: `{"file": "x.jpg", "caption": "...", "shape": ""}`
 - `testimonials.json` — real guest reviews only: `{"quote": "...", "name": "...", "from": "Germany"}`.

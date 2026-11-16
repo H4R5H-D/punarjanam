@@ -1,175 +1,77 @@
-[
-  {
-    "slug": "three-days-by-the-ganga",
-    "title": "Three days by the Ganga",
-    "length": "3 days, 2 nights",
-    "line": "A short, unhurried pause for people who don't have long.",
-    "dates": [],
-    "price": "Shared on enquiry",
-    "group": "Up to 10 people",
-    "image": "retreat-3day.jpg",
-    "summary": "Three days are enough to notice a different rhythm. Mornings begin at the river, days move slowly, and evenings end with kirtan. There's time to practise and time to do nothing at all.",
-    "itinerary": [
-      {
-        "title": "Arrive and settle",
-        "items": [
-          "Arrive by early afternoon and settle into your room",
-          "Gentle evening practice by the river",
-          "Shared vegetarian dinner",
-          "Kirtan to close the day"
-        ]
-      },
-      {
-        "title": "River, fire and forest",
-        "items": [
-          "Early morning Ganga dip (optional)",
-          "Morning yoga and pranayama",
-          "Havan with a local pandit",
-          "Afternoon nature walk",
-          "Free evening to explore"
-        ]
-      },
-      {
-        "title": "Closing",
-        "items": [
-          "Sunrise meditation",
-          "Morning practice",
-          "Closing circle",
-          "Lunch together and departure"
-        ]
-      }
-    ],
-    "inclusions": [
-      "2 nights' accommodation",
-      "All vegetarian meals",
-      "All yoga sessions and meditations",
-      "Havan and kirtan",
-      "Guided nature walk",
-      "Mats and props"
-    ],
-    "exclusions": [
-      "Travel to and from Rishikesh",
-      "Personal expenses",
-      "Travel insurance"
-    ],
-    "accommodation": "A simple, clean guesthouse a short walk from the river, with shared or private rooms, hot water and a quiet garden. Comfortable, not luxurious."
-  },
-  {
-    "slug": "five-days-a-different-rhythm",
-    "title": "Five days, a different rhythm",
-    "length": "5 days, 4 nights",
-    "line": "Enough time to slow down properly and get to know Rishikesh.",
-    "dates": [],
-    "price": "Shared on enquiry",
-    "group": "Up to 10 people",
-    "image": "retreat-5day.jpg",
-    "summary": "Five days give you room to settle in. Alongside daily practice there's the river, fire ritual, music, long walks and slow meals together, with afternoons left open for you.",
-    "itinerary": [
-      {
-        "title": "Arrive and settle",
-        "items": [
-          "Arrival and welcome",
-          "Gentle evening practice",
-          "Shared dinner"
-        ]
-      },
-      {
-        "title": "The river",
-        "items": [
-          "Early morning Ganga dip (optional)",
-          "Morning yoga and pranayama",
-          "Afternoon at leisure",
-          "Evening meditation"
-        ]
-      },
-      {
-        "title": "Fire and music",
-        "items": [
-          "Morning practice",
-          "Havan with a local pandit",
-          "Walk through old Rishikesh",
-          "Evening kirtan"
-        ]
-      },
-      {
-        "title": "Into the hills",
-        "items": [
-          "Sunrise practice",
-          "Half-day nature walk with a packed lunch",
-          "Restorative evening session"
-        ]
-      },
-      {
-        "title": "Closing",
-        "items": [
-          "Final morning practice",
-          "Closing circle",
-          "Lunch together and departure"
-        ]
-      }
-    ],
-    "inclusions": [
-      "4 nights' accommodation",
-      "All vegetarian meals",
-      "Daily yoga and meditation",
-      "Havan and kirtan",
-      "Guided nature walks",
-      "Local Rishikesh walk",
-      "Mats and props"
-    ],
-    "exclusions": [
-      "Travel to and from Rishikesh",
-      "Personal expenses",
-      "Travel insurance"
-    ],
-    "accommodation": "A simple, comfortable guesthouse near the Ganga. Shared and private rooms available."
-  },
-  {
-    "slug": "womens-circle",
-    "title": "Women's circle",
-    "length": "3 days, 2 nights",
-    "line": "A small retreat for women, held gently.",
-    "dates": [],
-    "price": "Shared on enquiry",
-    "group": "Up to 8 women",
-    "image": "retreat-women.jpg",
-    "summary": "A quiet, small-group retreat for women, with gentle practice, the river, shared meals and conversation. Dates are set when a group comes together, so tell us when you'd like to come.",
-    "itinerary": [
-      {
-        "title": "Arrive",
-        "items": [
-          "Welcome and opening circle",
-          "Gentle evening practice",
-          "Dinner together"
-        ]
-      },
-      {
-        "title": "Together",
-        "items": [
-          "Morning practice by the Ganga",
-          "Nature walk",
-          "Havan",
-          "Evening kirtan"
-        ]
-      },
-      {
-        "title": "Closing",
-        "items": [
-          "Morning meditation",
-          "Closing circle",
-          "Lunch and departure"
-        ]
-      }
-    ],
-    "inclusions": [
-      "2 nights' accommodation",
-      "All vegetarian meals",
-      "All sessions and experiences"
-    ],
-    "exclusions": [
-      "Travel to and from Rishikesh",
-      "Personal expenses"
-    ],
-    "accommodation": "A simple guesthouse near the river, women-only floor."
-  }
-]
+{
+  "section_title": "Punarjanam Signature Experiences",
+  "intro": [
+    "A collection of thoughtfully curated immersive experiences designed to help you slow down, reconnect with yourself, and experience the deeper essence of Rishikesh through yoga, meditation, nature and spirituality.",
+    "These are not just retreats, but experiences created around conscious living, inner exploration and meaningful connection."
+  ],
+  "common": [
+    "Comfortable retreat accommodation.",
+    "Two nutritious vegetarian meals daily (brunch and dinner).",
+    "Daily yoga, pranayama and meditation.",
+    "Five-elements cleansing practices.",
+    "Spiritual and nature-based experiences.",
+    "Dedicated time for rest and personal exploration."
+  ],
+  "stay_photos": [
+    ["stay-room.jpg", "A retreat room with a view of the Ganga"],
+    ["stay-balcony.jpg", "Morning coffee on the balcony above the river"],
+    ["stay-lounge.jpg", "The bright common room"]
+  ],
+  "retreats": [
+    {
+      "slug": "three-day-retreat",
+      "old_slug": "three-days-by-the-ganga",
+      "identity": "dawn",
+      "title": "Three-Day Retreat",
+      "themes": ["Let Go", "Reconnect", "Renew"],
+      "headline": "Three Days to Reconnect with Yourself",
+      "intro": "A thoughtfully curated three-day experiential retreat designed to help you step away from everyday distractions and reconnect with your body, breath, nature and inner self.",
+      "duration": "3 days",
+      "image": "retreat-three-day.jpg",
+      "image_alt": "A group meditating in a circle on the bank of the Ganga at sunrise",
+      "gallery": [["yoga-ghat-1.jpg", "Morning yoga on the ghat"], ["havan.jpg", "Havan with the group"], ["annadan.jpg", "Seva and shared food"]],
+      "includes": [
+        ["Daily Morning Yoga", "Progressive sessions combining yoga asanas, pranayama and meditation."],
+        ["Three Consecutive Ganga Dips", "A mindful morning connection with the sacred Ganga."],
+        ["Pranayama & Breathwork", "Guided breathing practices to cultivate awareness and inner stillness."],
+        ["Five Elements Cleansing", "Meditative experiences inspired by Earth, Water, Fire, Air and Space."],
+        ["Nature Walk & Grounding", "Mindful walking and connecting with the natural surroundings."],
+        ["Energetic Bhakti Kirtan", "Hanuman Chalisa, devotional singing, clapping and dancing."],
+        ["Havan & Traditional Rituals", "An experience of devotion, gratitude and traditional spiritual practices."],
+        ["Seva Experience", "Meaningful acts of service and compassion."],
+        ["Ganga Aarti", "Experience the beauty and spiritual atmosphere of the evening Ganga Aarti."],
+        ["Closing Circle", "Collective experience sharing, reflection and gratitude."]
+      ],
+      "experience": "Three days of yoga, breathwork, nature, devotion and conscious living, creating space to slow down and reconnect."
+    },
+    {
+      "slug": "five-day-retreat",
+      "old_slug": "five-days-a-different-rhythm",
+      "identity": "forest",
+      "title": "Five-Day Retreat",
+      "themes": ["Slow Down", "Go Within", "Explore", "Renew"],
+      "headline": "Five Days for a Deeper Journey Within",
+      "intro": "An extended immersive experience offering more time for silence, self-observation, deeper yoga practices and exploration of the spiritual and natural beauty of Rishikesh.",
+      "duration": "5 days",
+      "image": "retreat-five-day.jpg",
+      "image_alt": "Sunrise over the hills from a temple above Rishikesh",
+      "gallery": [["cave-meditation.jpg", "Silence and meditation in a cave"], ["sharing-circle.jpg", "A sharing circle by the river"], ["temple-sunset.jpg", "A temple at sunset"]],
+      "includes": [
+        ["Deep Noble Silence Experience", "A dedicated day of Noble Silence supported by thoughtfully designed silence-based activities to reduce external distractions and encourage deeper self-observation."],
+        ["Daily Morning Yoga", "Progressive guided sessions combining yoga asanas, pranayama and meditation."],
+        ["Ganga Connection", "Mindful Ganga dips and moments of stillness by the river."],
+        ["Five Elements Cleansing", "Meditative experiences inspired by the five elements."],
+        ["Deeper Pranayama Practices", "Explore different breathing techniques and develop greater breath awareness."],
+        ["Guided Inner Reflection", "Experiential activities, journaling and self-observation."],
+        ["Spiritual & Devotional Experiences", "Bhakti Kirtan, Hanuman Chalisa, Havan and traditional rituals."],
+        ["Nature Connection & Grounding", "Mindful outdoor experiences amidst greenery and natural surroundings."],
+        ["Special Full-Day Spiritual Excursion", "Visit spiritually significant and peaceful high-vibrational places around Rishikesh and its surroundings. This excursion combines sacred spaces, nature exploration, local experiences and the joy of travelling together."],
+        ["Seva Experience", "Participate in meaningful acts of service and compassion."],
+        ["Ganga Aarti", "Experience the spiritual atmosphere of the evening Ganga Aarti."],
+        ["Closing & Sharing Circle", "Conclude the retreat with collective reflection, experience sharing and gratitude."]
+      ],
+      "experience": "Five immersive days combining silence, yoga, spirituality, nature and exploration, offering a deeper opportunity to disconnect from everyday routines and reconnect with yourself."
+    }
+  ],
+  "retired": ["womens-circle"]
+}

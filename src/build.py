@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 """Builds the Punarjanam website into ../public from content/*.json.
 
-Edit content/*.json (sessions, retreats, gallery, testimonials, credits, site details),
-then run:  python src/build.py
-Deploy the ../public folder (GitHub Pages serves the gh-pages branch).
-Works on Python 3.9+.
+Offerings: Yoga Experiences (drop-in), Retreat Experiences (Signature Experiences: retreats.json),
+Spiritual Experiences (spiritual.json, each with its own page and a combined enquiry).
 
-Experience tiles: drop a photo into static/images with the file name listed in TILES below
-and rebuild. Until a file exists, that tile shows as a text card (never an empty box).
+Edit content/*.json, then run:  python src/build.py
+Deploy the ../public folder (GitHub Pages serves the gh-pages branch). Works on Python 3.9+.
+A photo that does not exist in static/images shows as a text card, never an empty box.
 """
 import json, shutil, html
 from pathlib import Path
@@ -19,7 +18,10 @@ C = lambda name: json.loads((ROOT / "content" / name).read_text(encoding="utf-8"
 
 SITE = C("site.json")
 SESS = C("sessions.json")
-RETREATS = C("retreats.json")
+RET = C("retreats.json")
+RETREATS = RET["retreats"]
+SPIRIT = C("spiritual.json")
+SPIRITS = SPIRIT["experiences"]
 GALLERY = C("gallery.json")
 VOICES = C("testimonials.json")
 CREDITS = C("credits.json")
@@ -34,34 +36,19 @@ WA_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor"
 IG_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/></svg>'
 MENU_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h18M3 16h18" stroke="currentColor" stroke-width="1.25" fill="none"/></svg>'
 ARROW = '<span class="arr" aria-hidden="true">→</span>'
+DOT = ' <i aria-hidden="true">•</i> '
 
 # The gallery page and its menu item only exist once gallery.json has real photos in it.
 SHOW_GALLERY = len(GALLERY) > 0
-NAV = [("index.html", "Home"), ("drop-in-yoga.html", "Drop-in Yoga"), ("retreats.html", "Retreats"),
-       ("index.html#experiences", "Experiences"), ("about.html", "About Maansi")] + \
+NAV = [("index.html", "Home"), ("drop-in-yoga.html", "Yoga"), ("retreats.html", "Retreats"),
+       ("spiritual-experiences.html", "Spiritual Experiences"), ("about.html", "About Maansi")] + \
       ([("gallery.html", "Gallery")] if SHOW_GALLERY else [])
-PAGES = ["drop-in-yoga.html", "retreats.html", "about.html"] + (["gallery.html"] if SHOW_GALLERY else []) + ["contact.html"]
-
-# Experience tiles: (file to drop into static/images, title, one line, link)
-TILES = [
-    ("exp-yoga-ganga.jpg", "Yoga by Maa Ganga", "Movement, breath and stillness beside the river.", "drop-in-yoga.html"),
-    ("exp-havan.jpg", "Havan Experience", "A traditional fire ritual with a pandit.", "retreats.html"),
-    ("exp-kirtan.jpg", "Kirtan & Bhajans", "Singing, music and dancing together.", "retreats.html"),
-    ("exp-nature-walks.jpg", "Nature Walks", "Trails and quiet viewpoints around Rishikesh.", "retreats.html"),
-    ("exp-ganga-dip.jpg", "Ganga Dip", "Early morning, in the sacred river.", "retreats.html"),
-    ("retreat-5day.jpg", "Retreat Experiences", "A few days, a different rhythm of life.", "retreats.html"),
-]
+PAGES = ["drop-in-yoga.html", "retreats.html", "spiritual-experiences.html", "about.html"] + \
+        (["gallery.html"] if SHOW_GALLERY else []) + ["contact.html"]
 
 
 def has(file):
     return (IMAGES / file).exists()
-
-
-def first(*files):
-    for f in files:
-        if has(f):
-            return f
-    return files[-1]
 
 
 def photo(file, alt, prefix="", cls="", eager=False):
@@ -86,8 +73,24 @@ def banner(file, alt=None, prefix="", eager=False):
     return f'<figure class="banner">{photo(file, alt, prefix, eager=eager)}{credit(file)}</figure>'
 
 
+def shots(items, prefix=""):
+    return '<div class="shots">' + "".join(photo(f, a, prefix) for f, a in items if has(f)) + '</div>'
+
+
 def wa(text):
     return E(text, quote=True)
+
+
+def themes(r):
+    return DOT.join(E(t) for t in r["themes"])
+
+
+def tile(i, file, title, line, href, prefix=""):
+    if has(file):
+        return (f'<li><a class="tile" href="{href}">{photo(file, title, prefix)}'
+                f'<span class="tile-t">{E(title)}</span></a></li>')
+    return (f'<li><a class="tile text" href="{href}"><span class="tile-n">{i:02d}</span>'
+            f'<span class="tile-t">{E(title)}</span><span class="tile-d">{E(line)}</span></a></li>')
 
 
 def page(path, title, desc, body, current=None, prefix="", schema=None, image="images/share.jpg", hero=False, preload=None):
@@ -130,8 +133,8 @@ def page(path, title, desc, body, current=None, prefix="", schema=None, image="i
 <header class="site-header">
   <div class="wrap bar">
     <a class="brand" href="{prefix}index.html" aria-label="{NAME} by Yogini Maansi, home">
-      <img class="logo-light" src="{prefix}images/logo-gold.png" alt="" width="200" height="30">
-      <img class="logo-dark" src="{prefix}images/logo-dark.png" alt="" width="200" height="30">
+      <img class="logo-light" src="{prefix}images/logo-ivory.png" alt="" width="226" height="34">
+      <img class="logo-dark" src="{prefix}images/logo-dark.png" alt="" width="226" height="34">
       <span>by Yogini Maansi</span>
     </a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu">{MENU_ICON}</button>
@@ -146,8 +149,8 @@ def page(path, title, desc, body, current=None, prefix="", schema=None, image="i
     <a class="foot-logo" href="{prefix}index.html" aria-label="{NAME} home"><img src="{prefix}images/logo-stacked-gold.png" alt="{NAME}, पुनर्जन्म" width="220" height="112" loading="lazy"><span>by Yogini Maansi</span></a>
     <div class="foot-mid">
       <p>Rishikesh, Uttarakhand, India</p>
-      <p class="pillars">Yoga <i>•</i> Retreats <i>•</i> Nature <i>•</i> Experiences</p>
-      <p class="foot-links"><a href="{prefix}drop-in-yoga.html">Drop-in Yoga</a><a href="{prefix}retreats.html">Retreats</a><a href="{prefix}about.html">About</a><a href="{prefix}contact.html">Contact</a></p>
+      <p class="pillars">Yoga <i>•</i> Retreats <i>•</i> Spiritual Experiences</p>
+      <p class="foot-links"><a href="{prefix}drop-in-yoga.html">Yoga</a><a href="{prefix}retreats.html">Retreats</a><a href="{prefix}spiritual-experiences.html">Spiritual Experiences</a><a href="{prefix}about.html">About</a><a href="{prefix}contact.html">Contact</a></p>
     </div>
     <div class="foot-social">
       <a href="{IG}" target="_blank" rel="noopener" aria-label="Instagram">{IG_ICON}</a>
@@ -166,13 +169,41 @@ def page(path, title, desc, body, current=None, prefix="", schema=None, image="i
     out.write_text(doc, encoding="utf-8")
 
 
+def redirect(path, target):
+    """Old URLs that were already shared forward to their new pages."""
+    out = OUT / path
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(f'<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Moved</title>'
+                   f'<meta http-equiv="refresh" content="0; url={target}"><link rel="canonical" href="{target}">'
+                   f'<meta name="robots" content="noindex"></head><body><p>This page has moved: <a href="{target}">continue</a>.</p></body></html>',
+                   encoding="utf-8")
+
+
 BUSINESS = {
     "@context": "https://schema.org", "@type": "LocalBusiness", "additionalType": "https://schema.org/SportsActivityLocation",
     "name": f"{NAME} by Yogini Maansi", "url": D + "/", "image": f"{D}/images/share.jpg", "logo": f"{D}/images/apple-touch-icon.png",
-    "description": "Drop-in yoga sessions and small curated retreats in Rishikesh for travellers and beginners.",
+    "description": "Drop-in yoga, signature retreats and spiritual experiences by the Ganga in Rishikesh.",
     "address": {"@type": "PostalAddress", "addressLocality": "Rishikesh", "addressRegion": "Uttarakhand", "addressCountry": "IN"},
     "sameAs": [IG], "telephone": "+91-9630084971",
 }
+
+
+# ---------------------------------------------------------------- Shared blocks
+def retreat_card(r, prefix=""):
+    href = f"{prefix}retreats/{r['slug']}.html"
+    img = photo(r["image"], r["image_alt"], prefix) if has(r["image"]) else ""
+    return (f'<article class="rcard rcard-{r["identity"]}">'
+            f'<a class="rcard-img" href="{href}" tabindex="-1" aria-hidden="true">{img}</a>'
+            f'<div class="rcard-body"><p class="themes">{themes(r)}</p>'
+            f'<h3><a href="{href}">{E(r["title"])}</a></h3><p class="rcard-line">{E(r["headline"])}</p>'
+            f'<a class="btn line" href="{href}">Explore Retreat {ARROW}</a></div></article>')
+
+
+def spirit_tiles(prefix="", exclude=None):
+    items = [s for s in SPIRITS if s["slug"] != exclude]
+    return "".join(tile(i, s["image"], s["title"], s["line"], f"{prefix}spiritual/{s['slug']}.html", prefix)
+                   for i, s in enumerate(items, 1))
+
 
 # ---------------------------------------------------------------- Home
 voices_html = ""
@@ -180,19 +211,6 @@ if VOICES:
     quotes = "".join(
         f'<blockquote>{E(v["quote"])}<cite>{E(v["name"])}, {E(v.get("from", ""))}</cite></blockquote>' for v in VOICES)
     voices_html = f'<section><div class="wrap"><h2>In their words</h2><div class="voices">{quotes}</div></div></section>'
-
-
-def tile(i, file, title, line, href):
-    if has(file):
-        return (f'<li><a class="tile" href="{href}">{photo(file, title)}'
-                f'<span class="tile-t">{E(title)}</span></a></li>')
-    return (f'<li><a class="tile text" href="{href}"><span class="tile-n">{i:02d}</span>'
-            f'<span class="tile-t">{E(title)}</span><span class="tile-d">{E(line)}</span></a></li>')
-
-
-tiles_html = "".join(tile(i, *t) for i, t in enumerate(TILES, 1))
-philo_img = first("philosophy.jpg", "retreat-women.jpg")
-about_img = "mansi-portrait.jpg"
 
 home = f"""
 <section class="hero">
@@ -203,16 +221,16 @@ home = f"""
     <p class="sub">Yoga, nature, Ganga and meaningful experiences.</p>
     <div class="actions">
       <a class="btn fill-light" data-wa="Hello {NAME}, I'd like to book a session." href="#">{WA_ICON}Book a Session</a>
-      <a class="btn line light" href="#experiences">Explore Experiences {ARROW}</a>
+      <a class="btn line light" href="#offerings">Explore Experiences {ARROW}</a>
     </div>
   </div>
 </section>
 
 <section class="facts-strip" aria-label="At a glance">
   <dl class="wrap facts-row">
-    <div><dt>Format</dt><dd>Drop-in sessions &amp; retreats</dd></div>
-    <div><dt>Groups</dt><dd>Small and welcoming</dd></div>
-    <div><dt>Where</dt><dd>By the Ganga, Rishikesh</dd></div>
+    <div><dt>Yoga</dt><dd>Drop-in sessions by the Ganga</dd></div>
+    <div><dt>Retreats</dt><dd>Three and five days</dd></div>
+    <div><dt>Spiritual</dt><dd>Rituals you can book one by one</dd></div>
     <div><dt>Guided by</dt><dd>Yogini Maansi</dd></div>
   </dl>
 </section>
@@ -224,23 +242,46 @@ home = f"""
     <p>At {NAME}, we bring together thoughtfully curated experiences inspired by yoga, nature, Ganga and the surroundings of Rishikesh.</p>
     <p class="rhythm">You participate. You explore. You experience.</p>
   </div>
-  <figure class="philo-img">{photo(philo_img, "The Ganga at Rishikesh")}{credit(philo_img, "credit on-img")}</figure>
+  <figure class="philo-img">{photo("meditation-beach.jpg", "Sitting in meditation on the sandy bank of the Ganga")}</figure>
 </section>
 
-<section id="experiences" class="exps">
-  <div class="wrap exps-grid">
-    <div class="exps-intro">
-      <p class="eyebrow">Experiences</p>
-      <h2>A journey through experiences.</h2>
-      <p>From morning yoga to sacred rituals, from nature walks to shared meals: Rishikesh, as it is lived.</p>
-      <a class="btn line" href="retreats.html">Explore All Experiences {ARROW}</a>
+<section id="offerings" class="offer">
+  <div class="wrap offer-grid">
+    <figure class="offer-img">{photo("yoga-tree-pose.jpg", "A group in tree pose on the bank of the Ganga")}</figure>
+    <div class="offer-text">
+      <p class="eyebrow">Yoga Experiences</p>
+      <h2>A morning with yoga and Maa Ganga.</h2>
+      <p>Drop-in sessions of yoga, pranayama and meditation beside the river. For travellers and beginners, even if you're in Rishikesh for a single day.</p>
+      <div class="actions"><a class="btn" data-wa="Hello {NAME}, I'd like to book a drop-in yoga session." href="#">Book a drop-in session</a><a class="link" href="drop-in-yoga.html">Explore drop-in yoga {ARROW}</a></div>
     </div>
-    <ul class="tiles">{tiles_html}</ul>
+  </div>
+</section>
+
+<section id="signature" class="signature">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Retreat Experiences</p>
+      <h2>{E(RET["section_title"])}</h2>
+      <p>{E(RET["intro"][0])}</p>
+    </div>
+    <div class="rcards">{"".join(retreat_card(r) for r in RETREATS)}</div>
+  </div>
+</section>
+
+<section id="spiritual" class="spiritual">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Spiritual Experiences</p>
+      <h2>{E(SPIRIT["section_title"])}</h2>
+      <p>{E(SPIRIT["intro"])}</p>
+    </div>
+    <ul class="tiles five">{spirit_tiles()}</ul>
+    <div class="actions center"><a class="btn line" href="spiritual-experiences.html">Choose and combine experiences {ARROW}</a></div>
   </div>
 </section>
 
 <section class="about-band">
-  <figure class="about-img">{photo(about_img, "Maansi in Rishikesh")}{credit(about_img, "credit on-img")}</figure>
+  <figure class="about-img">{photo("mansi-portrait.jpg", "Maansi in Rishikesh")}</figure>
   <div class="about-text">
     <img class="lotus-deco" src="images/mark-gold.png" alt="" aria-hidden="true" loading="lazy">
     <p class="eyebrow">About {NAME}</p>
@@ -253,17 +294,17 @@ home = f"""
 {voices_html}
 
 <section class="closing">
-  {photo("closing.jpg", "Morning mist over the Ganga at Rishikesh", cls="closing-img")}
+  {photo("closing-ganga-hills.jpg", "The Ganga winding between the green hills of Rishikesh", cls="closing-img")}
   <div class="wrap closing-text">
     <h2>Some things are better experienced than explained.<br>Perhaps Rishikesh is waiting.</h2>
     <p>Come as you are. Be part of the experience.</p>
     <a class="btn line light" href="contact.html">Get in Touch {ARROW}</a>
   </div>
-  {credit("closing.jpg", "credit on-img")}
+  
 </section>
 """
 
-# ---------------------------------------------------------------- Drop-in
+# ---------------------------------------------------------------- Yoga (drop-in)
 faq_schema = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
     {"@type": "Question", "name": f["q"], "acceptedAnswer": {"@type": "Answer", "text": f["a"]}} for f in SESS["faq"]]}
 
@@ -280,17 +321,17 @@ faq_html = "".join(f'<details><summary>{E(f["q"])}</summary><p>{E(f["a"])}</p></
 dropin = f"""
 <section class="page-intro">
   <div class="wrap">
-    <p class="eyebrow">Drop-in yoga</p>
+    <p class="eyebrow">Yoga Experiences</p>
     <h1>A morning with yoga and Maa Ganga.</h1>
-    <p class="lede">Here for a day or two? Join a morning session. No experience, no mat and no commitment needed.</p>
+    <p class="lede">Drop-in yoga sessions: yoga, pranayama and meditation by the river. Here for a day or two? No experience, no mat and no commitment needed.</p>
     <div class="actions"><a class="btn" data-wa="Hello {NAME}, I'd like to book a drop-in session." href="#">Book on WhatsApp</a><a class="link" href="#booking">How booking works</a></div>
   </div>
 </section>
 
 <section class="flush">
   <div class="wrap">
-    <div class="shots">{photo("group-session.jpg", "A small group practising yoga outdoors")}{photo("still-asana.jpg", "Students stretching on their mats")}{photo("still-meditation.jpg", "A group sitting in meditation")}</div>
-    <p class="caption">Recent morning sessions.</p>
+    {shots([("yoga-beach-1.jpg", "Morning practice on the bank of the Ganga"), ("yoga-beach-2.jpg", "Downward dog on the sand by the river"), ("yoga-beach-3.jpg", "Stretching towards the Ganga")])}
+    <p class="caption">Recent morning sessions by the Ganga.</p>
   </div>
 </section>
 
@@ -336,96 +377,157 @@ dropin = f"""
 </section>
 """
 
-# ---------------------------------------------------------------- Retreats
-def retreat_row(r):
-    dates = ", ".join(r["dates"]) if r["dates"] else "Dates on request"
-    return f"""<article class="retreat-row">
-  <a class="img" href="retreats/{r["slug"]}.html" tabindex="-1" aria-hidden="true">{photo(r["image"], "")}</a>
-  <div>
-    <h2><a href="retreats/{r["slug"]}.html">{E(r["title"])}</a></h2>
-    <p class="line">{E(r["line"])}</p>
-    <p class="meta">{E(r["length"])} · {E(r["group"])} · {E(dates)}</p>
-    <a class="link" href="retreats/{r["slug"]}.html">View the retreat</a>
-  </div>
-</article>"""
-
+# ---------------------------------------------------------------- Retreats (Signature Experiences)
+common_html = "".join(f"<li>{E(c)}</li>" for c in RET["common"])
 
 retreats = f"""
 <section class="page-intro">
   <div class="wrap">
-    <p class="eyebrow">Retreats</p>
-    <h1>A few days. A different rhythm of life.</h1>
-    <p class="lede">Small retreats in Rishikesh with yoga, the river, fire ritual, music, walks and shared meals. Simple stays, small groups, nothing prescribed.</p>
+    <p class="eyebrow">Retreat Experiences</p>
+    <h1>{E(RET["section_title"])}</h1>
+    {"".join(f'<p class="lede">{E(p)}</p>' for p in RET["intro"])}
   </div>
 </section>
-{banner("hero.jpg", alt="Sunrise over the Ganga at Rishikesh", eager=True)}
-<section><div class="wrap">{"".join(retreat_row(r) for r in RETREATS)}</div></section>
+<section class="flush"><div class="wrap"><div class="rcards">{"".join(retreat_card(r) for r in RETREATS)}</div></div></section>
 <section class="tint">
   <div class="wrap two-col">
-    <h2>Planning a group?</h2>
-    <div><p>We also put together private retreats for friends, families and teams. Tell us how many people, how long and roughly when.</p>
-    <div class="actions"><a class="btn" data-wa="Hello {NAME}, I'd like to plan a private retreat." href="#">Plan a private retreat</a></div></div>
+    <h2>Both experiences include.</h2>
+    <ul class="ticks">{common_html}</ul>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <h2 class="h-sm">Where you'll stay</h2>
+    {shots(RET["stay_photos"])}
+    <p class="caption">Rooms and common spaces at the retreat stay.</p>
   </div>
 </section>
 """
 
 
 def retreat_page(r):
-    if r["dates"]:
-        dates_html = "".join(
-            f'<li><span>{E(d)}</span><a class="link" data-wa="{wa("Hello " + NAME + ", I would like to reserve a place on " + r["title"] + ", " + d + ".")}" href="#">Reserve a place</a></li>'
-            for d in r["dates"])
-    else:
-        dates_html = (f'<li><span>Dates on request</span><a class="link" data-wa="{wa("Hello " + NAME + ", I would like to know about dates for " + r["title"] + ".")}" href="#">Ask about dates</a></li>')
-    schema = {"@context": "https://schema.org", "@type": "Product", "name": r["title"], "description": r["summary"],
-              "brand": {"@type": "Brand", "name": NAME}}
-    days = "".join(
-        "<li><div><h3>" + E(d["title"]) + "</h3><ul>" + "".join("<li>" + E(i) + "</li>" for i in d["items"]) + "</ul></div></li>"
-        for d in r["itinerary"])
-    incl = "".join("<li>" + E(i) + "</li>" for i in r["inclusions"])
-    excl = "".join("<li>" + E(i) + "</li>" for i in r["exclusions"])
+    other = [o for o in RETREATS if o["slug"] != r["slug"]]
+    includes = "".join(f"<li><h3>{E(t)}</h3><p>{E(d)}</p></li>" for t, d in r["includes"])
+    schema = {"@context": "https://schema.org", "@type": "Product", "name": f"{r['title']} | {NAME}",
+              "description": r["intro"], "brand": {"@type": "Brand", "name": NAME}}
+    enquire = wa(f"Hello {NAME}, I'd like to know dates and details for the {r['title']}.")
+    other_link = "".join(f'<a class="link" href="{o["slug"]}.html">Explore the {E(o["title"])} {ARROW}</a>' for o in other)
     body = f"""
-<section class="page-intro">
+<section class="page-intro id-{r["identity"]}">
   <div class="wrap">
-    <a class="crumb" href="../retreats.html">All retreats</a>
+    <a class="crumb" href="../retreats.html">{E(RET["section_title"])}</a>
+    <p class="themes">{themes(r)}</p>
     <h1>{E(r["title"])}</h1>
-    <p class="lede">{E(r["line"])}</p>
+    <p class="lede">{E(r["headline"])}</p>
+    <div class="actions"><a class="btn {"fill-light" if r["identity"] == "forest" else ""}" data-wa="{enquire}" href="#">{WA_ICON}Enquire about this retreat</a></div>
   </div>
 </section>
-{banner(r["image"], prefix="../", eager=True)}
+{banner(r["image"], alt=r["image_alt"], prefix="../", eager=True)}
 <section>
-  <div class="wrap">
-    <dl class="facts"><div><dt>Length</dt><dd>{E(r["length"])}</dd></div><div><dt>Group</dt><dd>{E(r["group"])}</dd></div><div><dt>Price</dt><dd>{E(r["price"])}</dd></div><div><dt>Where</dt><dd>Rishikesh</dd></div></dl>
-    <div class="two-col gap-top"><h2>The retreat.</h2><p class="lede-sm">{E(r["summary"])}</p></div>
+  <div class="wrap two-col">
+    <h2>The retreat.</h2>
+    <div>
+      <p class="lede-sm">{E(r["intro"])}</p>
+      <dl class="facts"><div><dt>Duration</dt><dd>{E(r["duration"])}</dd></div><div><dt>Stay</dt><dd>Comfortable retreat accommodation</dd></div><div><dt>Meals</dt><dd>Brunch and dinner, vegetarian</dd></div><div><dt>Price &amp; dates</dt><dd>Shared on enquiry</dd></div></dl>
+    </div>
   </div>
 </section>
 <section class="tint">
   <div class="wrap two-col">
-    <h2>Day by day.</h2>
-    <ol class="itinerary">{days}</ol>
+    <h2>What's included in the experience.</h2>
+    <ol class="includes">{includes}</ol>
+  </div>
+</section>
+<section class="statement id-{r["identity"]}">
+  <div class="wrap narrow">
+    <p class="eyebrow">The Experience</p>
+    <p class="statement-text">{E(r["experience"])}</p>
   </div>
 </section>
 <section>
   <div class="wrap two-col">
-    <h2>Where you'll stay.</h2>
-    <div><p>{E(r["accommodation"])}</p>
-      <div class="incl">
-        <div><h3>Included</h3><ul>{incl}</ul></div>
-        <div><h3>Not included</h3><ul>{excl}</ul></div>
-      </div>
-    </div>
+    <h2>Common to both retreats.</h2>
+    <ul class="ticks">{common_html}</ul>
   </div>
 </section>
-<section class="tint" id="dates">
-  <div class="wrap two-col">
-    <h2>Dates.</h2>
-    <div><ul class="dates">{dates_html}</ul><p class="small">Price, dates and stay details are shared on WhatsApp.</p></div>
+<section class="flush">
+  <div class="wrap">
+    <h2 class="h-sm">Moments</h2>
+    {shots(r["gallery"], "../")}
+    <h2 class="h-sm gap-top">Where you'll stay</h2>
+    {shots(RET["stay_photos"], "../")}
+  </div>
+</section>
+<section class="invite">
+  <div class="wrap narrow">
+    <h2>{E(" · ".join(r["themes"]))}</h2>
+    <p>Dates, price and stay details are shared on WhatsApp.</p>
+    <div class="actions"><a class="btn" data-wa="{enquire}" href="#">{WA_ICON}Enquire on WhatsApp</a>{other_link}</div>
   </div>
 </section>
 """
-    page(f"retreats/{r['slug']}.html", f"{r['title']}: {r['length']} retreat in Rishikesh | {NAME}",
-         r["summary"][:150], body, current="retreats.html", prefix="../", schema=schema,
+    page(f"retreats/{r['slug']}.html", f"{r['title']} in Rishikesh: {r['headline']} | {NAME}",
+         r["intro"][:155], body, current="retreats.html", prefix="../", schema=schema,
          image=f"images/{r['image']}")
+
+
+# ---------------------------------------------------------------- Spiritual Experiences
+def spirit_card(s):
+    href = f"spiritual/{s['slug']}.html"
+    img = photo(s["image"], s["image_alt"]) if has(s["image"]) else ""
+    return (f'<li class="scard"><a class="scard-img" href="{href}" tabindex="-1" aria-hidden="true">{img}</a>'
+            f'<div class="scard-body"><h2><a href="{href}">{E(s["title"])}</a></h2><p>{E(s["line"])}</p>'
+            f'<div class="scard-foot"><label class="pick"><input type="checkbox" name="exp" value="{E(s["title"])}" data-slug="{s["slug"]}"> Add to my enquiry</label>'
+            f'<a class="link" href="{href}">Details {ARROW}</a></div></div></li>')
+
+
+spiritual = f"""
+<section class="page-intro">
+  <div class="wrap">
+    <p class="eyebrow">Spiritual Experiences</p>
+    <h1>{E(SPIRIT["section_title"])}</h1>
+    <p class="lede">{E(SPIRIT["intro"])}</p>
+    <p class="small">Tick the experiences you'd like, then send one enquiry for all of them.</p>
+  </div>
+</section>
+<section class="flush">
+  <div class="wrap">
+    <form class="combine" id="combine" onsubmit="return false"><ul class="scards">{"".join(spirit_card(s) for s in SPIRITS)}</ul></form>
+  </div>
+</section>
+<div class="combine-bar" hidden><p class="combine-count" aria-live="polite">0 selected</p><a class="btn" id="combine-send" href="#">{WA_ICON}Enquire on WhatsApp</a></div>
+"""
+
+
+def spirit_page(s):
+    expect = "".join(f"<li>{E(x)}</li>" for x in s["expect"])
+    img = photo(s["image"], s["image_alt"], "../", eager=True) if has(s["image"]) else ""
+    body = f"""
+<section class="page-intro slim"><div class="wrap"><a class="crumb" href="../spiritual-experiences.html">{E(SPIRIT["section_title"])}</a></div></section>
+<section class="flush">
+  <div class="wrap sx">
+    <figure class="sx-img">{img}{credit(s["image"])}</figure>
+    <div class="sx-text">
+      <p class="eyebrow">Spiritual Experience</p>
+      <h1>{E(s["title"])}</h1>
+      <p class="lede">{E(s["line"])}</p>
+      <p>{E(s["about"])}</p>
+      <h2 class="h-sm">What to expect</h2>
+      <ul class="ticks">{expect}</ul>
+      <dl class="facts compact"><div><dt>Timing &amp; duration</dt><dd>Shared on enquiry</dd></div><div><dt>Price</dt><dd>Shared on enquiry</dd></div><div><dt>Where</dt><dd>By the Ganga, Rishikesh</dd></div></dl>
+      <div class="actions"><a class="btn" data-wa="{wa(f"Hello {NAME}, I'd like to book: {s['title']}.")}" href="#">{WA_ICON}Enquire on WhatsApp</a><a class="link" href="../spiritual-experiences.html?add={s["slug"]}">Combine with other experiences {ARROW}</a></div>
+    </div>
+  </div>
+</section>
+<section class="tint">
+  <div class="wrap">
+    <h2 class="h-sm">Other spiritual experiences</h2>
+    <ul class="tiles four">{spirit_tiles("../", exclude=s["slug"])}</ul>
+  </div>
+</section>
+"""
+    page(f"spiritual/{s['slug']}.html", f"{s['title']} in Rishikesh | {NAME}", f"{s['line']} {s['about']}"[:155],
+         body, current="spiritual-experiences.html", prefix="../", image=f"images/{s['image']}")
 
 
 # ---------------------------------------------------------------- About
@@ -443,7 +545,7 @@ about = f"""
 <section class="page-intro"><div class="wrap"><p class="eyebrow">About Maansi</p><h1>Meet the person behind {NAME}.</h1></div></section>
 <section class="flush">
   <div class="wrap story">
-    {photo("mansi-portrait.jpg", "Maansi in Rishikesh", eager=True)}
+    {photo("maansi-adiyogi.jpg", "Maansi in white, eyes closed, beneath the Adiyogi statue", cls="tall", eager=True)}
     <div class="text">{story_html}
       <p class="close">This isn't about becoming someone else.<br>It's about giving yourself the opportunity to experience something different.</p>
       <p class="sig">— Maansi</p>
@@ -452,7 +554,7 @@ about = f"""
 </section>
 <section class="tint">
   <div class="wrap isnt">
-    <div><h2>What {NAME} is.</h2><ul><li>Drop-in yoga for travellers and beginners</li><li>Small, curated retreats</li><li>Ganga, havan, kirtan and nature</li><li>Time and space, not a programme</li></ul></div>
+    <div><h2>What {NAME} is.</h2><ul><li>Drop-in yoga for travellers and beginners</li><li>Signature three- and five-day retreats</li><li>Spiritual experiences by the Ganga</li><li>Time and space, not a programme</li></ul></div>
     <div><h2>What it isn't.</h2><ul><li>A teacher training school</li><li>A certificate or diploma</li><li>A luxury resort or spa</li><li>A promise of transformation</li></ul></div>
   </div>
 </section>
@@ -474,7 +576,8 @@ gallery = f"""
 """
 
 # ---------------------------------------------------------------- Contact
-options = [f["name"] for f in SESS["formats"]] + [r["title"] for r in RETREATS] + ["A private retreat", "Something else"]
+options = [f"Drop-in yoga: {f['name']}" for f in SESS["formats"]] + [r["title"] for r in RETREATS] + \
+          [s["title"] for s in SPIRITS] + ["Several experiences", "Something else"]
 options_html = "".join(f"<option>{E(o)}</option>" for o in options)
 map_q = E(SITE["map_query"]).replace(" ", "+")
 contact = f"""
@@ -511,38 +614,44 @@ def main():
         shutil.rmtree(OUT)
     shutil.copytree(ROOT / "static", OUT)
     (OUT / ".nojekyll").write_text("")
-    page("index.html", f"{NAME} by Yogini Maansi | Yoga experiences & retreats in Rishikesh",
-         "Drop-in yoga by the Ganga and small curated retreats in Rishikesh. For travellers and beginners. An experience, not a lesson.",
+    page("index.html", f"{NAME} by Yogini Maansi | Yoga, retreats & spiritual experiences in Rishikesh",
+         "Drop-in yoga by the Ganga, signature three- and five-day retreats, and spiritual experiences in Rishikesh. An experience, not a lesson.",
          home, current="index.html", schema=BUSINESS, hero=True, preload="images/hero.jpg")
-    page("drop-in-yoga.html", f"Drop-in yoga classes in Rishikesh for beginners & travellers | {NAME}",
-         "Join a single yoga session in Rishikesh, even for one day. Asana, pranayama, meditation and relaxation by the Ganga. Book on WhatsApp.",
+    page("drop-in-yoga.html", f"Drop-in yoga in Rishikesh by the Ganga | {NAME}",
+         "Join a drop-in yoga, pranayama and meditation session by the Ganga in Rishikesh, even for one day. Book on WhatsApp.",
          dropin, current="drop-in-yoga.html", schema=faq_schema)
-    page("retreats.html", f"3-day & 5-day yoga retreats in Rishikesh | {NAME}",
-         "Small, curated yoga retreats in Rishikesh with Ganga dip, havan, kirtan, nature walks and shared vegetarian meals.",
-         retreats, current="retreats.html")
+    page("retreats.html", f"{RET['section_title']}: 3-day & 5-day retreats in Rishikesh | {NAME}",
+         RET["intro"][0][:155], retreats, current="retreats.html")
     for r in RETREATS:
         retreat_page(r)
+        redirect(f"retreats/{r['old_slug']}.html", f"{r['slug']}.html")
+    for slug in RET["retired"]:
+        redirect(f"retreats/{slug}.html", "../retreats.html")
+    page("spiritual-experiences.html", f"{SPIRIT['section_title']} in Rishikesh | {NAME}",
+         SPIRIT["intro"][:155], spiritual, current="spiritual-experiences.html")
+    for s in SPIRITS:
+        spirit_page(s)
     page("about.html", f"About Maansi | {NAME}, Rishikesh",
          f"Meet Maansi, the yoga practitioner behind {NAME} in Rishikesh.", about, current="about.html")
     if SHOW_GALLERY:
-        page("gallery.html", f"Gallery | {NAME}, Rishikesh", f"Moments from {NAME} yoga sessions and retreats in Rishikesh.",
-             gallery, current="gallery.html")
+        page("gallery.html", f"Gallery | {NAME}, Rishikesh", f"Moments from {NAME} in Rishikesh.", gallery, current="gallery.html")
     page("contact.html", f"Contact & booking | {NAME}, Rishikesh",
-         "Book a drop-in yoga session or retreat in Rishikesh on WhatsApp.", contact, current="contact.html")
+         "Book drop-in yoga, a retreat or a spiritual experience in Rishikesh on WhatsApp.", contact, current="contact.html")
 
-    urls = [""] + PAGES + [f"retreats/{r['slug']}.html" for r in RETREATS]
+    urls = [""] + PAGES + [f"retreats/{r['slug']}.html" for r in RETREATS] + [f"spiritual/{s['slug']}.html" for s in SPIRITS]
     (OUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                      + "".join(f"  <url><loc>{D}/{u}</loc></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
     (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {D}/sitemap.xml\n", encoding="utf-8")
     (OUT / "llms.txt").write_text(
-        f"# {NAME} by Yogini Maansi\n\n> Drop-in yoga sessions and small curated retreats in Rishikesh, India, for travellers and beginners. No teacher training or certification.\n\n"
+        f"# {NAME} by Yogini Maansi\n\n> Drop-in yoga, signature retreats and spiritual experiences by the Ganga in Rishikesh, India. No teacher training or certification.\n\n"
         + "".join(f"- [{u or 'Home'}]({D}/{u})\n" for u in [""] + PAGES)
-        + "".join(f"- [{r['title']}]({D}/retreats/{r['slug']}.html): {r['length']}, {r['price']}\n" for r in RETREATS),
+        + "".join(f"- [{r['title']}]({D}/retreats/{r['slug']}.html): {r['duration']}, price on enquiry\n" for r in RETREATS)
+        + "".join(f"- [{s['title']}]({D}/spiritual/{s['slug']}.html): {s['line']}\n" for s in SPIRITS),
         encoding="utf-8")
-    missing = [t[0] for t in TILES if not has(t[0])]
+    missing = sorted({f for f in [r["image"] for r in RETREATS] + [s["image"] for s in SPIRITS] if not has(f)})
     print("Built", len(urls), "pages into", OUT)
     if missing:
-        print("Experience tiles still showing as text (add these to static/images):", ", ".join(missing))
+        print("Missing photos (showing as text cards):", ", ".join(missing))
 
 
 if __name__ == "__main__":
