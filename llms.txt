@@ -1,12 +1,17 @@
 # Punarjanam by Yogini Maansi
 
-> Drop-in yoga sessions and small curated retreats in Rishikesh, India, for travellers and beginners. No teacher training or certification.
+> Drop-in yoga, signature retreats and spiritual experiences by the Ganga in Rishikesh, India. No teacher training or certification.
 
 - [Home](https://h4r5h-d.github.io/punarjanam/)
 - [drop-in-yoga.html](https://h4r5h-d.github.io/punarjanam/drop-in-yoga.html)
 - [retreats.html](https://h4r5h-d.github.io/punarjanam/retreats.html)
+- [spiritual-experiences.html](https://h4r5h-d.github.io/punarjanam/spiritual-experiences.html)
 - [about.html](https://h4r5h-d.github.io/punarjanam/about.html)
 - [contact.html](https://h4r5h-d.github.io/punarjanam/contact.html)
-- [Three days by the Ganga](https://h4r5h-d.github.io/punarjanam/retreats/three-days-by-the-ganga.html): 3 days, 2 nights, Shared on enquiry
-- [Five days, a different rhythm](https://h4r5h-d.github.io/punarjanam/retreats/five-days-a-different-rhythm.html): 5 days, 4 nights, Shared on enquiry
-- [Women's circle](https://h4r5h-d.github.io/punarjanam/retreats/womens-circle.html): 3 days, 2 nights, Shared on enquiry
+- [Three-Day Retreat](https://h4r5h-d.github.io/punarjanam/retreats/three-day-retreat.html): 3 days, price on enquiry
+- [Five-Day Retreat](https://h4r5h-d.github.io/punarjanam/retreats/five-day-retreat.html): 5 days, price on enquiry
+- [Rudrabhishek](https://h4r5h-d.github.io/punarjanam/spiritual/rudrabhishek.html): A Vedic offering to Lord Shiva.
+- [Havan by the Ganga](https://h4r5h-d.github.io/punarjanam/spiritual/havan-by-the-ganga.html): A sacred fire ritual beside the river.
+- [Ganga Aarti Experience](https://h4r5h-d.github.io/punarjanam/spiritual/ganga-aarti.html): Evening lamps, chants and bells on the river.
+- [Ganga Snan & Deep Daan](https://h4r5h-d.github.io/punarjanam/spiritual/ganga-snan-deep-daan.html): A holy dip, and a lamp offered to the river.
+- [Seva & Annadan Experience](https://h4r5h-d.github.io/punarjanam/spiritual/seva-annadan.html): Service, and the offering of food.

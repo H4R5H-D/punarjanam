@@ -60,6 +60,37 @@
     dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
   }
 
+  // Spiritual experiences: tick several, send one WhatsApp enquiry
+  var combine = document.getElementById('combine');
+  if (combine) {
+    var bar = document.querySelector('.combine-bar');
+    var count = bar.querySelector('.combine-count');
+    var send = document.getElementById('combine-send');
+    var boxes = [].slice.call(combine.querySelectorAll('input[name="exp"]'));
+    var pre = new URLSearchParams(location.search).get('add');
+    boxes.forEach(function (b) { if (pre && b.getAttribute('data-slug') === pre) b.checked = true; });
+    var update = function () {
+      var chosen = boxes.filter(function (b) { return b.checked; }).map(function (b) { return b.value; });
+      boxes.forEach(function (b) { b.closest('.scard').classList.toggle('picked', b.checked); });
+      bar.hidden = chosen.length === 0;
+      document.body.classList.toggle('combining', chosen.length > 0);
+      count.textContent = chosen.length + (chosen.length === 1 ? ' experience selected' : ' experiences selected');
+      var msg = 'Hello Punarjanam, I\'d like to book ' + (chosen.length === 1 ? 'this experience' : 'these experiences') +
+        ':\n' + chosen.map(function (c) { return '• ' + c; }).join('\n');
+      send.href = waBase + '?text=' + encodeURIComponent(msg);
+      send.target = '_blank'; send.rel = 'noopener';
+    };
+    combine.addEventListener('change', update);
+    update();
+    var picked = boxes.filter(function (b) { return b.checked; })[0];
+    if (pre && picked) {
+      // wait for images so the layout has settled, then bring the chosen card into view
+      window.addEventListener('load', function () {
+        picked.closest('.scard').scrollIntoView({ block: 'center', behavior: 'auto' });
+      });
+    }
+  }
+
   // Contact form → WhatsApp message
   var form = document.getElementById('enquiry');
   if (form) {
