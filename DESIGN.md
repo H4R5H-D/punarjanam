@@ -1,6 +1,6 @@
 # Punarjanam — design contract
 
-Client brand, not a Vyuh theme. The master `C:\Vyuh\DESIGN.md` themes (dark, Vyuh accents) do not apply;
+Client brand, not a Vyuh theme. Logo LOCKED 17 Nov: the flat gold medallion (images/medallion.png, gold disc + ivory lotus + ring of dots, from Mansi's WhatsApp file) beside PUNARJANAM in Cormorant Garamond spaced caps (.3em) with BY YOGINI MANSI underneath. Same pairing in header and footer; medallion alone for favicon and watermarks. The master `C:\Vyuh\DESIGN.md` themes (dark, Vyuh accents) do not apply;
 its universal rules 2–5 (grid, motion, density, one accent) do. Source: Maansi's brief (`brief/README.md`)
 and Harsh's approved mockup (14 Nov 2026).
 
@@ -27,7 +27,8 @@ Cormorant Garamond (display, 300–400, italics for taglines) + Inter (body, lab
 
 ## Layout and motion
 - Spacing on a 4/8px grid. Square corners on cards, tiles and buttons; round only for icon buttons.
-- Motion ≤300ms, ease-out, tied to a state change (hover, menu). No entrance animation that hides content.
+- Motion ≤300ms, ease-out, tied to a state change (hover, menu). No entrance animation that hides content above the fold.
+- Exception (Harsh, 16 Nov): photo galleries fade up ~700ms as they scroll into view, and stay photos zoom 4% on hover; both off under prefers-reduced-motion.
 - Full-bleed photos only for hero and closing; everything else sits in the 1160px wrap.
 - Text on photos always gets a scrim; minimum 4.5:1 for body, 3:1 for 24px+ type.
 

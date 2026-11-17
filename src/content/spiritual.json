@@ -1,16 +1,20 @@
 {
   "section_title": "Spiritual Experiences by Punarjanam",
   "intro": "Individually bookable experiences rooted in the living traditions of Rishikesh. Join one, or combine a few into your own day by the Ganga.",
-  "draft_note": "DRAFT copy written from general knowledge of each ritual. Maansi to review and replace with her own words.",
+  "draft_note": "DRAFT copy written from general knowledge of each ritual. Mansi to review and replace with her own words.",
   "experiences": [
     {
       "slug": "rudrabhishek",
       "title": "Rudrabhishek",
       "line": "A Vedic offering to Lord Shiva.",
-      "image": "temple-sunset.jpg",
-      "image_alt": "A temple in the hills above Rishikesh at sunset",
+      "image": "rudrabhishek.jpg",
+      "image_alt": "Water poured from a copper kalash over a Shiva lingam with jasmine, a diya and rudraksha beads",
       "about": "Rudrabhishek is one of the oldest rituals of devotion to Lord Shiva. The Shiva lingam is bathed with offerings such as water, milk, curd, honey and ghee while the Rudram mantras are chanted.",
-      "expect": ["The ritual is guided by a pandit.", "You take part in the offerings yourself.", "Time to sit quietly with the chanting."]
+      "expect": [
+        "The ritual is guided by a pandit.",
+        "You take part in the offerings yourself.",
+        "Time to sit quietly with the chanting."
+      ]
     },
     {
       "slug": "havan-by-the-ganga",
@@ -19,34 +23,50 @@
       "image": "havan.jpg",
       "image_alt": "Guests in marigold garlands offering into the havan fire",
       "about": "A havan is a traditional fire ritual. Seated around the sacred fire, participants offer herbs, grains and ghee into the flames with each mantra, as an act of gratitude and intention.",
-      "expect": ["Seated around the fire with the group.", "Each offering made with a mantra.", "A quiet, grounding close."]
+      "expect": [
+        "Seated around the fire with the group.",
+        "Each offering made with a mantra.",
+        "A quiet, grounding close."
+      ]
     },
     {
       "slug": "ganga-aarti",
       "title": "Ganga Aarti Experience",
       "line": "Evening lamps, chants and bells on the river.",
-      "image": "evening-ganga.jpg",
-      "image_alt": "The temples on the riverbank lit up in the evening",
+      "image": "ganga-aarti.jpg",
+      "image_alt": "The evening Ganga Aarti on the ghats of Rishikesh, lamps raised over the river",
       "about": "As the light fades, lamps are raised to the Ganga with chants, bells and songs of devotion. Experiencing the aarti together is one of the most moving moments of a day in Rishikesh.",
-      "expect": ["Arrive before sunset to settle in.", "Join the chanting, or simply watch.", "A short walk by the river afterwards."]
+      "expect": [
+        "Arrive before sunset to settle in.",
+        "Join the chanting, or simply watch.",
+        "A short walk by the river afterwards."
+      ]
     },
     {
       "slug": "ganga-snan-deep-daan",
       "title": "Ganga Snan & Deep Daan",
       "line": "A holy dip, and a lamp offered to the river.",
-      "image": "retreat-women.jpg",
-      "image_alt": "Golden light on the Ganga",
+      "image": "ganga-snan-lamps.jpg",
+      "image_alt": "Hundreds of clay lamps floating on the Ganga at dusk beside the ghat",
       "about": "Ganga Snan is a mindful dip in the sacred river. Deep Daan is the offering of a small leaf lamp with flowers, set afloat on the water with a prayer or an intention.",
-      "expect": ["A guided, unhurried dip at a safe spot.", "Making and offering your own deep.", "A moment of stillness by the water."]
+      "expect": [
+        "A guided, unhurried dip at a safe spot.",
+        "Making and offering your own deep.",
+        "A moment of stillness by the water."
+      ]
     },
     {
       "slug": "seva-annadan",
       "title": "Seva & Annadan Experience",
       "line": "Service, and the offering of food.",
-      "image": "annadan.jpg",
-      "image_alt": "Guests serving food together",
+      "image": "seva-annadan.jpg",
+      "image_alt": "A guest serving rice to women on the ghat steps during annadan",
       "about": "Seva is selfless service. Annadan, the offering of food, is considered one of the highest forms of giving. Together you prepare and serve a meal, as an act of compassion.",
-      "expect": ["Helping prepare and serve a meal.", "Serving with the group.", "Sharing reflections afterwards."]
+      "expect": [
+        "Helping prepare and serve a meal.",
+        "Serving with the group.",
+        "Sharing reflections afterwards."
+      ]
     }
   ]
 }

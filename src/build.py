@@ -41,7 +41,7 @@ DOT = ' <i aria-hidden="true">•</i> '
 # The gallery page and its menu item only exist once gallery.json has real photos in it.
 SHOW_GALLERY = len(GALLERY) > 0
 NAV = [("index.html", "Home"), ("drop-in-yoga.html", "Yoga"), ("retreats.html", "Retreats"),
-       ("spiritual-experiences.html", "Spiritual Experiences"), ("about.html", "About Maansi")] + \
+       ("spiritual-experiences.html", "Spiritual Experiences"), ("about.html", "About Mansi")] + \
       ([("gallery.html", "Gallery")] if SHOW_GALLERY else [])
 PAGES = ["drop-in-yoga.html", "retreats.html", "spiritual-experiences.html", "about.html"] + \
         (["gallery.html"] if SHOW_GALLERY else []) + ["contact.html"]
@@ -75,6 +75,13 @@ def banner(file, alt=None, prefix="", eager=False):
 
 def shots(items, prefix=""):
     return '<div class="shots">' + "".join(photo(f, a, prefix) for f, a in items if has(f)) + '</div>'
+
+
+def stay_gallery(prefix=""):
+    """Where you'll stay: the first three photos large, the rest in a smaller row."""
+    items = [(f, a) for f, a in RET["stay_photos"] if has(f)]
+    return '<div class="stay-grid">' + "".join(
+        f'<figure class="{"big" if i < 3 else "small"}">{photo(f, a, prefix)}</figure>' for i, (f, a) in enumerate(items)) + '</div>'
 
 
 def wa(text):
@@ -112,7 +119,7 @@ def page(path, title, desc, body, current=None, prefix="", schema=None, image="i
 <meta name="description" content="{E(desc)}">
 <link rel="canonical" href="{url}">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="{NAME} by Yogini Maansi">
+<meta property="og:site_name" content="{NAME} by Yogini Mansi">
 <meta property="og:title" content="{E(title)}">
 <meta property="og:description" content="{E(desc)}">
 <meta property="og:url" content="{url}">
@@ -132,10 +139,10 @@ def page(path, title, desc, body, current=None, prefix="", schema=None, image="i
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap bar">
-    <a class="brand" href="{prefix}index.html" aria-label="{NAME} by Yogini Maansi, home">
-      <img class="logo-light" src="{prefix}images/logo-ivory.png" alt="" width="226" height="34">
-      <img class="logo-dark" src="{prefix}images/logo-dark.png" alt="" width="226" height="34">
-      <span>by Yogini Maansi</span>
+    <a class="brand" href="{prefix}index.html" aria-label="{NAME} by Yogini Mansi, home">
+      <img class="brand-mark" src="{prefix}images/medallion.png" alt="" width="40" height="40">
+      <span class="brand-word">Punarjanam</span>
+      <span class="brand-by">by Yogini Mansi</span>
     </a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu">{MENU_ICON}</button>
     <nav class="nav" id="nav" aria-label="Main">{nav}<a class="btn small line" data-wa="Hello {NAME}, I'd like to know more." href="#">{WA_ICON}Get in Touch</a></nav>
@@ -146,7 +153,7 @@ def page(path, title, desc, body, current=None, prefix="", schema=None, image="i
 </main>
 <footer class="site-footer">
   <div class="wrap foot">
-    <a class="foot-logo" href="{prefix}index.html" aria-label="{NAME} home"><img src="{prefix}images/logo-stacked-gold.png" alt="{NAME}, पुनर्जन्म" width="220" height="112" loading="lazy"><span>by Yogini Maansi</span></a>
+    <a class="foot-logo" href="{prefix}index.html" aria-label="{NAME} by Yogini Mansi, home"><img src="{prefix}images/medallion.png" alt="" width="64" height="64" loading="lazy"><span class="foot-word">Punarjanam</span><span class="foot-by">by Yogini Mansi</span></a>
     <div class="foot-mid">
       <p>Rishikesh, Uttarakhand, India</p>
       <p class="pillars">Yoga <i>•</i> Retreats <i>•</i> Spiritual Experiences</p>
@@ -157,7 +164,7 @@ def page(path, title, desc, body, current=None, prefix="", schema=None, image="i
       <a data-wa="Hello {NAME}," href="#" aria-label="WhatsApp">{WA_ICON}</a>
     </div>
   </div>
-  <div class="wrap foot-bottom">© <span id="year">2026</span> {NAME} by Yogini Maansi</div>
+  <div class="wrap foot-bottom">© <span id="year">2026</span> {NAME} by Yogini Mansi</div>
 </footer>
 <a class="wa-float" data-wa="Hello {NAME}, I'd like to know more." href="#" aria-label="Message us on WhatsApp">{WA_ICON}</a>
 <script>window.PUNARJANMA={json.dumps({"whatsapp": SITE["whatsapp"]})};</script>
@@ -181,7 +188,7 @@ def redirect(path, target):
 
 BUSINESS = {
     "@context": "https://schema.org", "@type": "LocalBusiness", "additionalType": "https://schema.org/SportsActivityLocation",
-    "name": f"{NAME} by Yogini Maansi", "url": D + "/", "image": f"{D}/images/share.jpg", "logo": f"{D}/images/apple-touch-icon.png",
+    "name": f"{NAME} by Yogini Mansi", "url": D + "/", "image": f"{D}/images/share.jpg", "logo": f"{D}/images/apple-touch-icon.png",
     "description": "Drop-in yoga, signature retreats and spiritual experiences by the Ganga in Rishikesh.",
     "address": {"@type": "PostalAddress", "addressLocality": "Rishikesh", "addressRegion": "Uttarakhand", "addressCountry": "IN"},
     "sameAs": [IG], "telephone": "+91-9630084971",
@@ -216,9 +223,9 @@ home = f"""
 <section class="hero">
   {photo("hero.jpg", "Sunrise over the Ganga at Rishikesh, with Lakshman Jhula and the temples on the riverbank", cls="hero-img", eager=True)}
   <div class="wrap hero-text">
-    <h1>Come. Experience Rishikesh differently.</h1>
-    <p class="tag">An experience, not a lesson.</p>
-    <p class="sub">Yoga, nature, Ganga and meaningful experiences.</p>
+    <h1>Come. Experience. Explore.</h1>
+    <p class="tag">Beyond what words can express.</p>
+    <p class="sub">Yoga, spirituality, nature &amp; Rishikesh.</p>
     <div class="actions">
       <a class="btn fill-light" data-wa="Hello {NAME}, I'd like to book a session." href="#">{WA_ICON}Book a Session</a>
       <a class="btn line light" href="#offerings">Explore Experiences {ARROW}</a>
@@ -231,23 +238,23 @@ home = f"""
     <div><dt>Yoga</dt><dd>Drop-in sessions by the Ganga</dd></div>
     <div><dt>Retreats</dt><dd>Three and five days</dd></div>
     <div><dt>Spiritual</dt><dd>Rituals you can book one by one</dd></div>
-    <div><dt>Guided by</dt><dd>Yogini Maansi</dd></div>
+    <div><dt>Guided by</dt><dd>Yogini Mansi</dd></div>
   </dl>
 </section>
 
 <section class="philo">
   <div class="philo-text">
-    <img class="lotus-deco" src="images/mark-gold.png" alt="" aria-hidden="true" loading="lazy">
+    <img class="lotus-deco" src="images/medallion.png" alt="" aria-hidden="true" loading="lazy">
     <h2>Some things are better experienced than explained.</h2>
     <p>At {NAME}, we bring together thoughtfully curated experiences inspired by yoga, nature, Ganga and the surroundings of Rishikesh.</p>
     <p class="rhythm">You participate. You explore. You experience.</p>
   </div>
-  <figure class="philo-img">{photo("meditation-beach.jpg", "Sitting in meditation on the sandy bank of the Ganga")}</figure>
+  <figure class="philo-img">{photo("cave-meditation.jpg", "Sitting in silent meditation inside a stone cave", cls="focus-left")}</figure>
 </section>
 
 <section id="offerings" class="offer">
   <div class="wrap offer-grid">
-    <figure class="offer-img">{photo("yoga-tree-pose.jpg", "A group in tree pose on the bank of the Ganga")}</figure>
+    <figure class="offer-img">{photo("meditation-beach.jpg", "Sitting in meditation on the sandy bank of the Ganga", cls="focus-low")}</figure>
     <div class="offer-text">
       <p class="eyebrow">Yoga Experiences</p>
       <h2>A morning with yoga and Maa Ganga.</h2>
@@ -281,13 +288,15 @@ home = f"""
 </section>
 
 <section class="about-band">
-  <figure class="about-img">{photo("mansi-portrait.jpg", "Maansi in Rishikesh")}</figure>
+  <div class="wrap about-band-grid">
+  <figure class="about-img">{photo("mansi-adiyogi-portrait.jpg", "Mansi in white, eyes closed, beneath the Adiyogi statue")}</figure>
   <div class="about-text">
-    <img class="lotus-deco" src="images/mark-gold.png" alt="" aria-hidden="true" loading="lazy">
+    <img class="lotus-deco" src="images/medallion.png" alt="" aria-hidden="true" loading="lazy">
     <p class="eyebrow">About {NAME}</p>
     <h2>Meet the person behind {NAME}.</h2>
-    <p>I'm Maansi, a yoga practitioner and an explorer of life. Rishikesh gradually became more than just a place to live. {NAME} comes from a desire to share some of these experiences with others.</p>
-    <a class="link" href="about.html">Know more about Maansi {ARROW}</a>
+    <p>I'm Mansi. My journey with yoga gradually became a deeper exploration of life and the self, shaped by years of practice, sadhana, time in an ashram and living close to the Ganga in Rishikesh.</p>
+    <a class="link" href="about.html">Know more about Mansi {ARROW}</a>
+  </div>
   </div>
 </section>
 
@@ -323,7 +332,7 @@ dropin = f"""
   <div class="wrap">
     <p class="eyebrow">Yoga Experiences</p>
     <h1>A morning with yoga and Maa Ganga.</h1>
-    <p class="lede">Drop-in yoga sessions: yoga, pranayama and meditation by the river. Here for a day or two? No experience, no mat and no commitment needed.</p>
+    <p class="lede">Drop-in yoga sessions: yoga, pranayama and meditation by the river. Here for a day or two? No experience and no commitment needed.</p>
     <div class="actions"><a class="btn" data-wa="Hello {NAME}, I'd like to book a drop-in session." href="#">Book on WhatsApp</a><a class="link" href="#booking">How booking works</a></div>
   </div>
 </section>
@@ -364,7 +373,7 @@ dropin = f"""
         <li><h3>Get your session</h3><p>You'll get the next available session, its timing and the price for your group.</p></li>
         <li><h3>Meet by the Ganga</h3><p>The meeting point is shared on WhatsApp or a quick call.</p></li>
       </ol>
-      <div class="actions"><a class="btn" data-wa="Hello Maansi, I'd like to know the next session, timing and meeting point." href="#">Message {PHONE}</a></div>
+      <div class="actions"><a class="btn" data-wa="Hello Mansi, I'd like to know the next session, timing and meeting point." href="#">Message {PHONE}</a></div>
     </div>
   </div>
 </section>
@@ -398,8 +407,8 @@ retreats = f"""
 <section>
   <div class="wrap">
     <h2 class="h-sm">Where you'll stay</h2>
-    {shots(RET["stay_photos"])}
-    <p class="caption">Rooms and common spaces at the retreat stay.</p>
+    {stay_gallery()}
+    <p class="caption">A room, the river and the café at the retreat stay.</p>
   </div>
 </section>
 """
@@ -425,7 +434,7 @@ def retreat_page(r):
 {banner(r["image"], alt=r["image_alt"], prefix="../", eager=True)}
 <section>
   <div class="wrap two-col">
-    <h2>The retreat.</h2>
+    <h2>The Retreat</h2>
     <div>
       <p class="lede-sm">{E(r["intro"])}</p>
       <dl class="facts"><div><dt>Duration</dt><dd>{E(r["duration"])}</dd></div><div><dt>Stay</dt><dd>Comfortable retreat accommodation</dd></div><div><dt>Meals</dt><dd>Brunch and dinner, vegetarian</dd></div><div><dt>Price &amp; dates</dt><dd>Shared on enquiry</dd></div></dl>
@@ -455,7 +464,7 @@ def retreat_page(r):
     <h2 class="h-sm">Moments</h2>
     {shots(r["gallery"], "../")}
     <h2 class="h-sm gap-top">Where you'll stay</h2>
-    {shots(RET["stay_photos"], "../")}
+    {stay_gallery("../")}
   </div>
 </section>
 <section class="invite">
@@ -530,26 +539,23 @@ def spirit_page(s):
          body, current="spiritual-experiences.html", prefix="../", image=f"images/{s['image']}")
 
 
-# ---------------------------------------------------------------- About
-STORY = [
-    f"I'm Maansi — a yoga practitioner, an explorer of life and the person behind {NAME}.",
-    "My journey has never been limited to learning a practice or earning a qualification. Over the years, my experiences with yoga, self-exploration, discipline, people and life itself have shaped the way I see things.",
-    "Yoga became one part of a much larger journey — a journey of understanding myself, experiencing life more consciously and discovering the value of simply being present.",
-    "Rishikesh gradually became more than just a place to live. Its mountains, Ganga, nature and unique way of life became an important part of my own experience.",
-    f"{NAME} comes from a desire to share some of these experiences with others.",
-    "I don't believe in telling people what they must feel or what they should discover. I believe in creating the right space, bringing people together and allowing experiences to unfold naturally.",
-    f"Through {NAME}, I want to bring people closer to yoga, nature, Indian traditions and the simple yet meaningful experiences that life offers.",
-]
-story_html = "".join(f"<p>{E(p)}</p>" for p in STORY)
+# ---------------------------------------------------------------- About (Mansi's own words, 16 Nov)
 about = f"""
-<section class="page-intro"><div class="wrap"><p class="eyebrow">About Maansi</p><h1>Meet the person behind {NAME}.</h1></div></section>
-<section class="flush">
-  <div class="wrap story">
-    {photo("maansi-adiyogi.jpg", "Maansi in white, eyes closed, beneath the Adiyogi statue", cls="tall", eager=True)}
-    <div class="text">{story_html}
-      <p class="close">This isn't about becoming someone else.<br>It's about giving yourself the opportunity to experience something different.</p>
-      <p class="sig">— Maansi</p>
+<section class="about-hero">
+  <div class="wrap about-grid">
+    <figure class="about-portrait">{photo("mansi-adiyogi-portrait.jpg", "Mansi in white, eyes closed, beneath the Adiyogi statue", eager=True)}</figure>
+    <div class="about-intro">
+      <p class="eyebrow">Founder, {NAME}</p>
+      <h1>Meet Mansi</h1>
+      <p class="lead">I'm Mansi. My journey with yoga gradually became a deeper exploration of life and the self, shaped by years of practice, sadhana, time in an ashram and living close to the Ganga in Rishikesh.</p>
+      <p>{NAME} was born from a desire to share a little of what this journey has allowed me to experience the essence of yoga beyond the mat, spirituality beyond what we simply read or hear about, and the profound beauty in experiences we often take for granted.</p>
     </div>
+  </div>
+</section>
+<section class="about-more">
+  <div class="wrap narrow">
+    <p>Through yoga, retreats and thoughtfully curated spiritual experiences, I hope to offer people a glimpse of something they may not have encountered before something that perhaps cannot be fully explained, but can only be felt.</p>
+    <p>I don't promise a transformation or prescribe a path. I simply wish to create experiences that may touch someone's life in ways words cannot express. Where that experience takes them is theirs to discover.</p>
   </div>
 </section>
 <section class="tint">
@@ -614,7 +620,7 @@ def main():
         shutil.rmtree(OUT)
     shutil.copytree(ROOT / "static", OUT)
     (OUT / ".nojekyll").write_text("")
-    page("index.html", f"{NAME} by Yogini Maansi | Yoga, retreats & spiritual experiences in Rishikesh",
+    page("index.html", f"{NAME} by Yogini Mansi | Yoga, retreats & spiritual experiences in Rishikesh",
          "Drop-in yoga by the Ganga, signature three- and five-day retreats, and spiritual experiences in Rishikesh. An experience, not a lesson.",
          home, current="index.html", schema=BUSINESS, hero=True, preload="images/hero.jpg")
     page("drop-in-yoga.html", f"Drop-in yoga in Rishikesh by the Ganga | {NAME}",
@@ -631,8 +637,8 @@ def main():
          SPIRIT["intro"][:155], spiritual, current="spiritual-experiences.html")
     for s in SPIRITS:
         spirit_page(s)
-    page("about.html", f"About Maansi | {NAME}, Rishikesh",
-         f"Meet Maansi, the yoga practitioner behind {NAME} in Rishikesh.", about, current="about.html")
+    page("about.html", f"Meet Mansi, founder of {NAME} | Rishikesh",
+         "Mansi's journey with yoga: years of practice, sadhana, time in an ashram and living close to the Ganga in Rishikesh.", about, current="about.html")
     if SHOW_GALLERY:
         page("gallery.html", f"Gallery | {NAME}, Rishikesh", f"Moments from {NAME} in Rishikesh.", gallery, current="gallery.html")
     page("contact.html", f"Contact & booking | {NAME}, Rishikesh",
@@ -643,7 +649,7 @@ def main():
                                      + "".join(f"  <url><loc>{D}/{u}</loc></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
     (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {D}/sitemap.xml\n", encoding="utf-8")
     (OUT / "llms.txt").write_text(
-        f"# {NAME} by Yogini Maansi\n\n> Drop-in yoga, signature retreats and spiritual experiences by the Ganga in Rishikesh, India. No teacher training or certification.\n\n"
+        f"# {NAME} by Yogini Mansi\n\n> Drop-in yoga, signature retreats and spiritual experiences by the Ganga in Rishikesh, India. No teacher training or certification.\n\n"
         + "".join(f"- [{u or 'Home'}]({D}/{u})\n" for u in [""] + PAGES)
         + "".join(f"- [{r['title']}]({D}/retreats/{r['slug']}.html): {r['duration']}, price on enquiry\n" for r in RETREATS)
         + "".join(f"- [{s['title']}]({D}/spiritual/{s['slug']}.html): {s['line']}\n" for s in SPIRITS),

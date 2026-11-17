@@ -13,9 +13,18 @@
     "Dedicated time for rest and personal exploration."
   ],
   "stay_photos": [
-    ["stay-room.jpg", "A retreat room with a view of the Ganga"],
-    ["stay-balcony.jpg", "Morning coffee on the balcony above the river"],
-    ["stay-lounge.jpg", "The bright common room"]
+    [
+      "stay-room-view.jpg",
+      "A room with a wide window onto the Ganga"
+    ],
+    [
+      "stay-river.jpg",
+      "The Ganga and the temples of Rishikesh seen from the stay"
+    ],
+    [
+      "stay-cafe.jpg",
+      "The café at the retreat stay, lit up in the evening"
+    ]
   ],
   "retreats": [
     {
@@ -23,24 +32,71 @@
       "old_slug": "three-days-by-the-ganga",
       "identity": "dawn",
       "title": "Three-Day Retreat",
-      "themes": ["Let Go", "Reconnect", "Renew"],
+      "themes": [
+        "Let Go",
+        "Reconnect",
+        "Renew"
+      ],
       "headline": "Three Days to Reconnect with Yourself",
       "intro": "A thoughtfully curated three-day experiential retreat designed to help you step away from everyday distractions and reconnect with your body, breath, nature and inner self.",
       "duration": "3 days",
       "image": "retreat-three-day.jpg",
       "image_alt": "A group meditating in a circle on the bank of the Ganga at sunrise",
-      "gallery": [["yoga-ghat-1.jpg", "Morning yoga on the ghat"], ["havan.jpg", "Havan with the group"], ["annadan.jpg", "Seva and shared food"]],
+      "gallery": [
+        [
+          "yoga-ghat-1.jpg",
+          "Morning yoga on the ghat"
+        ],
+        [
+          "havan.jpg",
+          "Havan with the group"
+        ],
+        [
+          "annadan.jpg",
+          "Seva and shared food"
+        ]
+      ],
       "includes": [
-        ["Daily Morning Yoga", "Progressive sessions combining yoga asanas, pranayama and meditation."],
-        ["Three Consecutive Ganga Dips", "A mindful morning connection with the sacred Ganga."],
-        ["Pranayama & Breathwork", "Guided breathing practices to cultivate awareness and inner stillness."],
-        ["Five Elements Cleansing", "Meditative experiences inspired by Earth, Water, Fire, Air and Space."],
-        ["Nature Walk & Grounding", "Mindful walking and connecting with the natural surroundings."],
-        ["Energetic Bhakti Kirtan", "Hanuman Chalisa, devotional singing, clapping and dancing."],
-        ["Havan & Traditional Rituals", "An experience of devotion, gratitude and traditional spiritual practices."],
-        ["Seva Experience", "Meaningful acts of service and compassion."],
-        ["Ganga Aarti", "Experience the beauty and spiritual atmosphere of the evening Ganga Aarti."],
-        ["Closing Circle", "Collective experience sharing, reflection and gratitude."]
+        [
+          "Daily Morning Yoga",
+          "Progressive sessions combining yoga asanas, pranayama and meditation."
+        ],
+        [
+          "Three Consecutive Ganga Dips",
+          "A mindful morning connection with the sacred Ganga."
+        ],
+        [
+          "Pranayama & Breathwork",
+          "Guided breathing practices to cultivate awareness and inner stillness."
+        ],
+        [
+          "Five Elements Cleansing",
+          "Meditative experiences inspired by Earth, Water, Fire, Air and Space."
+        ],
+        [
+          "Nature Walk & Grounding",
+          "Mindful walking and connecting with the natural surroundings."
+        ],
+        [
+          "Energetic Bhakti Kirtan",
+          "Hanuman Chalisa, devotional singing, clapping and dancing."
+        ],
+        [
+          "Havan & Traditional Rituals",
+          "An experience of devotion, gratitude and traditional spiritual practices."
+        ],
+        [
+          "Seva Experience",
+          "Meaningful acts of service and compassion."
+        ],
+        [
+          "Ganga Aarti",
+          "Experience the beauty and spiritual atmosphere of the evening Ganga Aarti."
+        ],
+        [
+          "Closing Circle",
+          "Collective experience sharing, reflection and gratitude."
+        ]
       ],
       "experience": "Three days of yoga, breathwork, nature, devotion and conscious living, creating space to slow down and reconnect."
     },
@@ -49,29 +105,85 @@
       "old_slug": "five-days-a-different-rhythm",
       "identity": "forest",
       "title": "Five-Day Retreat",
-      "themes": ["Slow Down", "Go Within", "Explore", "Renew"],
+      "themes": [
+        "Slow Down",
+        "Go Within",
+        "Explore",
+        "Renew"
+      ],
       "headline": "Five Days for a Deeper Journey Within",
       "intro": "An extended immersive experience offering more time for silence, self-observation, deeper yoga practices and exploration of the spiritual and natural beauty of Rishikesh.",
       "duration": "5 days",
       "image": "retreat-five-day.jpg",
       "image_alt": "Sunrise over the hills from a temple above Rishikesh",
-      "gallery": [["cave-meditation.jpg", "Silence and meditation in a cave"], ["sharing-circle.jpg", "A sharing circle by the river"], ["temple-sunset.jpg", "A temple at sunset"]],
+      "gallery": [
+        [
+          "cave-meditation.jpg",
+          "Silence and meditation in a cave"
+        ],
+        [
+          "sharing-circle.jpg",
+          "A sharing circle by the river"
+        ],
+        [
+          "temple-sunset.jpg",
+          "A temple at sunset"
+        ]
+      ],
       "includes": [
-        ["Deep Noble Silence Experience", "A dedicated day of Noble Silence supported by thoughtfully designed silence-based activities to reduce external distractions and encourage deeper self-observation."],
-        ["Daily Morning Yoga", "Progressive guided sessions combining yoga asanas, pranayama and meditation."],
-        ["Ganga Connection", "Mindful Ganga dips and moments of stillness by the river."],
-        ["Five Elements Cleansing", "Meditative experiences inspired by the five elements."],
-        ["Deeper Pranayama Practices", "Explore different breathing techniques and develop greater breath awareness."],
-        ["Guided Inner Reflection", "Experiential activities, journaling and self-observation."],
-        ["Spiritual & Devotional Experiences", "Bhakti Kirtan, Hanuman Chalisa, Havan and traditional rituals."],
-        ["Nature Connection & Grounding", "Mindful outdoor experiences amidst greenery and natural surroundings."],
-        ["Special Full-Day Spiritual Excursion", "Visit spiritually significant and peaceful high-vibrational places around Rishikesh and its surroundings. This excursion combines sacred spaces, nature exploration, local experiences and the joy of travelling together."],
-        ["Seva Experience", "Participate in meaningful acts of service and compassion."],
-        ["Ganga Aarti", "Experience the spiritual atmosphere of the evening Ganga Aarti."],
-        ["Closing & Sharing Circle", "Conclude the retreat with collective reflection, experience sharing and gratitude."]
+        [
+          "Deep Noble Silence Experience",
+          "A dedicated day of Noble Silence supported by thoughtfully designed silence-based activities to reduce external distractions and encourage deeper self-observation."
+        ],
+        [
+          "Daily Morning Yoga",
+          "Progressive guided sessions combining yoga asanas, pranayama and meditation."
+        ],
+        [
+          "Ganga Connection",
+          "Mindful Ganga dips and moments of stillness by the river."
+        ],
+        [
+          "Five Elements Cleansing",
+          "Meditative experiences inspired by the five elements."
+        ],
+        [
+          "Deeper Pranayama Practices",
+          "Explore different breathing techniques and develop greater breath awareness."
+        ],
+        [
+          "Guided Inner Reflection",
+          "Experiential activities, journaling and self-observation."
+        ],
+        [
+          "Spiritual & Devotional Experiences",
+          "Bhakti Kirtan, Hanuman Chalisa, Havan and traditional rituals."
+        ],
+        [
+          "Nature Connection & Grounding",
+          "Mindful outdoor experiences amidst greenery and natural surroundings."
+        ],
+        [
+          "Special Full-Day Spiritual Excursion",
+          "Visit spiritually significant and peaceful high-vibrational places around Rishikesh and its surroundings. This excursion combines sacred spaces, nature exploration, local experiences and the joy of travelling together."
+        ],
+        [
+          "Seva Experience",
+          "Participate in meaningful acts of service and compassion."
+        ],
+        [
+          "Ganga Aarti",
+          "Experience the spiritual atmosphere of the evening Ganga Aarti."
+        ],
+        [
+          "Closing & Sharing Circle",
+          "Conclude the retreat with collective reflection, experience sharing and gratitude."
+        ]
       ],
       "experience": "Five immersive days combining silence, yoga, spirituality, nature and exploration, offering a deeper opportunity to disconnect from everyday routines and reconnect with yourself."
     }
   ],
-  "retired": ["womens-circle"]
+  "retired": [
+    "womens-circle"
+  ]
 }

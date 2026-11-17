@@ -2,7 +2,7 @@
   "formats": [
     {
       "name": "Single session",
-      "length": "90 minutes",
+      "length": "60 minutes",
       "price": "",
       "for": "You have one free morning in Rishikesh.",
       "detail": "Gentle asana, pranayama, a short meditation and deep relaxation by the Ganga."
@@ -23,7 +23,7 @@
     },
     {
       "name": "Private session",
-      "length": "60 or 90 minutes",
+      "length": "60 minutes",
       "price": "",
       "for": "You'd like it to be just you, or your group.",
       "detail": "Shaped around your body, your pace and what you want from the time."
@@ -45,7 +45,7 @@
     },
     {
       "q": "Do I need to bring a mat?",
-      "a": "No. Mats and blankets are provided. Wear comfortable clothes and bring water."
+      "a": "Yes, please bring your own mat, as traditionally, yoga practitioners use their personal mats to maintain their individual energy and practice space. Wear comfortable, loose-fitting clothing that allows ease of movement during practice."
     },
     {
       "q": "Where do sessions happen?",
