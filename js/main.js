@@ -91,6 +91,22 @@
     }
   }
 
+  // Subtle reveal for photo galleries; skipped when the visitor prefers reduced motion
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var revealables = document.querySelectorAll('.stay-grid figure, .shots img');
+    if (revealables.length) {
+      document.documentElement.classList.add('js-reveal');
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -8% 0px' });
+      [].forEach.call(revealables, function (el, i) {
+        el.classList.add('reveal');
+        el.style.transitionDelay = (i % 4) * 90 + 'ms';
+        io.observe(el);
+      });
+    }
+  }
+
   // Contact form → WhatsApp message
   var form = document.getElementById('enquiry');
   if (form) {
