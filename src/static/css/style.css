@@ -139,8 +139,8 @@ body.has-hero .site-header.solid .nav .btn.line { color: var(--walnut); border-c
 .focus-low { object-position: 50% 63% !important; }
 .focus-left { object-position: 30% 50% !important; }
 .hero .tag { font: italic 400 clamp(1.75rem, 3vw, 2.5rem)/1.25 var(--serif); margin: 1.25rem 0 0; }
-.hero .tag::after { content: ""; display: block; width: 72px; height: 1px; background: rgba(245, 241, 232, .7); margin-top: 1.5rem; }
-.hero .sub { font: 400 clamp(1.4rem, 2vw, 1.75rem)/1.4 var(--serif); margin: 1.5rem 0 2.25rem; max-width: 30rem; }
+.hero .tag::after { content: ""; display: block; width: 72px; height: 1px; background: rgba(245, 241, 232, .7); margin-top: .75rem; }
+.hero .sub { font: 400 clamp(1.4rem, 2vw, 1.75rem)/1.4 var(--serif); margin: .75rem 0 2.25rem; max-width: 30rem; }
 @media (max-width: 760px) {
   .hero { min-height: 86svh; align-items: end; }
   .hero-img { object-position: 30% center; }
