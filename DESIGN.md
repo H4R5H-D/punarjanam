@@ -1,6 +1,6 @@
 # Punarjanam — design contract
 
-Client brand, not a Vyuh theme. Logo LOCKED 17 Nov: the flat gold medallion (images/medallion.png, gold disc + ivory lotus + ring of dots, from Mansi's WhatsApp file) beside PUNARJANAM in Cormorant Garamond spaced caps (.3em) with BY YOGINI MANSI underneath. Same pairing in header and footer; medallion alone for favicon and watermarks. The master `C:\Vyuh\DESIGN.md` themes (dark, Vyuh accents) do not apply;
+Client brand, not a Vyuh theme. Logo LOCKED 17 Nov (night) (Harsh: "keep the old logo that was better", picked option C): thin gold LINE mandala (inline SVG, 12 petals in a ring, `currentColor`) beside the "punarjanam" lettering (wordmark-ivory.png over the hero, wordmark-dark.png on solid header) with BY YOGINI MANSI underneath; footer = round seal with PUNARJANAM · RISHIKESH · BY YOGINI MANSI on the ring; favicon/app icon = gold disc with 8 ivory petals; watermarks = mandala-gold.svg. Superseded: flat gold medallion + PUNARJANAM caps (17 Nov afternoon). The master `C:\Vyuh\DESIGN.md` themes (dark, Vyuh accents) do not apply;
 its universal rules 2–5 (grid, motion, density, one accent) do. Source: Maansi's brief (`brief/README.md`)
 and Harsh's approved mockup (14 Nov 2026).
 

@@ -48,6 +48,22 @@ PAGES = ["drop-in-yoga.html", "retreats.html", "spiritual-experiences.html", "ab
         (["gallery.html"] if SHOW_GALLERY else []) + ["contact.html"]
 
 
+# ---------------------------------------------------------------- Mandala logo (Harsh's pick, 18 Nov)
+_PETALS = "".join(f'<path transform="rotate({i * 30})" d="M0 -6 C 7 -16 7 -31 0 -42 C -7 -31 -7 -16 0 -6 Z"/>' for i in range(12))
+MANDALA_MARK = ('<svg class="brand-mark" viewBox="-50 -50 100 100" aria-hidden="true">'
+                '<circle r="46" fill="none" stroke="currentColor" stroke-width="3.2"/>'
+                f'<g fill="none" stroke="currentColor" stroke-width="2.8" stroke-linejoin="round">{_PETALS}</g>'
+                '<circle r="5" fill="currentColor"/></svg>')
+_SEAL_PETALS = "".join(f'<path transform="rotate({i * 30})" d="M0 -6 C 8 -20 8 -36 0 -48 C -8 -36 -8 -20 0 -6 Z"/>' for i in range(12))
+MANDALA_SEAL = ('<svg class="seal" viewBox="0 0 200 200" role="img" aria-label="Punarjanam, Rishikesh, by Yogini Mansi">'
+                '<defs><path id="seal-ring" d="M100 100 m-80 0 a80 80 0 1 1 160 0 a80 80 0 1 1 -160 0"/></defs>'
+                '<circle cx="100" cy="100" r="94" fill="none" stroke="#C2A56B" stroke-width="2"/>'
+                '<circle cx="100" cy="100" r="68" fill="none" stroke="#C2A56B" stroke-width="1"/>'
+                '<text font-family="Inter, sans-serif" font-weight="500" font-size="10.5" letter-spacing="4.2" fill="currentColor">'
+                '<textPath href="#seal-ring">PUNARJANAM · RISHIKESH · BY YOGINI MANSI ·</textPath></text>'
+                f'<g transform="translate(100 100)" fill="none" stroke="#C2A56B" stroke-width="1.6" stroke-linejoin="round">{_SEAL_PETALS}</g>'
+                '<circle cx="100" cy="100" r="6" fill="#C2A56B"/></svg>')
+
 def has(file):
     return (IMAGES / file).exists()
 
@@ -141,9 +157,10 @@ def page(path, title, desc, body, current=None, prefix="", schema=None, image="i
 <header class="site-header">
   <div class="wrap bar">
     <a class="brand" href="{prefix}index.html" aria-label="{NAME} by Yogini Mansi, home">
-      <img class="brand-mark" src="{prefix}images/medallion.png" alt="" width="40" height="40">
-      <span class="brand-word">Punarjanam</span>
-      <span class="brand-by">by Yogini Mansi</span>
+      {MANDALA_MARK}
+      <img class="logo-light" src="{prefix}images/wordmark-ivory.png" alt="" width="164" height="26">
+      <img class="logo-dark" src="{prefix}images/wordmark-dark.png" alt="" width="164" height="26">
+      <span>by Yogini Mansi</span>
     </a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu">{MENU_ICON}</button>
     <nav class="nav" id="nav" aria-label="Main">{nav}<a class="btn small line" data-wa="Hello {NAME}, I'd like to know more." href="#">{WA_ICON}Get in Touch</a></nav>
@@ -154,7 +171,7 @@ def page(path, title, desc, body, current=None, prefix="", schema=None, image="i
 </main>
 <footer class="site-footer">
   <div class="wrap foot">
-    <a class="foot-logo" href="{prefix}index.html" aria-label="{NAME} by Yogini Mansi, home"><img src="{prefix}images/medallion.png" alt="" width="64" height="64" loading="lazy"><span class="foot-word">Punarjanam</span><span class="foot-by">by Yogini Mansi</span></a>
+    <a class="foot-logo" href="{prefix}index.html" aria-label="{NAME} by Yogini Mansi, home">{MANDALA_SEAL}</a>
     <div class="foot-mid">
       <p>Rishikesh, Uttarakhand, India</p>
       <p class="foot-email"><a href="mailto:{EMAIL}">{EMAIL}</a></p>
@@ -229,7 +246,7 @@ home = f"""
     <p class="tag">Beyond what words can express.</p>
     <p class="sub">Yoga, spirituality, nature &amp; Rishikesh.</p>
     <div class="actions">
-      <a class="btn fill-light" data-wa="Hello {NAME}, I'd like to book a session." href="#">{WA_ICON}Book a Session</a>
+      <a class="btn fill-light" href="contact.html#enquiry">Book a Session</a>
       <a class="btn line light" href="#offerings">Explore Experiences {ARROW}</a>
     </div>
   </div>
@@ -246,7 +263,7 @@ home = f"""
 
 <section class="philo">
   <div class="philo-text">
-    <img class="lotus-deco" src="images/medallion.png" alt="" aria-hidden="true" loading="lazy">
+    <img class="lotus-deco" src="images/mandala-gold.svg" alt="" aria-hidden="true" loading="lazy">
     <h2>Some things are better experienced than explained.</h2>
     <p>At {NAME}, we bring together thoughtfully curated experiences inspired by yoga, nature, Ganga and the surroundings of Rishikesh.</p>
     <p class="rhythm">You participate. You explore. You experience.</p>
@@ -293,10 +310,10 @@ home = f"""
   <div class="wrap about-band-grid">
   <figure class="about-img">{photo("mansi-adiyogi-portrait.jpg", "Mansi in white, eyes closed, beneath the Adiyogi statue")}</figure>
   <div class="about-text">
-    <img class="lotus-deco" src="images/medallion.png" alt="" aria-hidden="true" loading="lazy">
+    <img class="lotus-deco" src="images/mandala-gold.svg" alt="" aria-hidden="true" loading="lazy">
     <p class="eyebrow">About {NAME}</p>
     <h2>Meet the person behind {NAME}.</h2>
-    <p>I'm Mansi. My journey with yoga gradually became a deeper exploration of life and the self, shaped by years of practice, sadhana, time in an ashram and living close to the Ganga in Rishikesh.</p>
+    <p>Namaskaram, I am Mansi. My journey with yoga gradually became a deeper exploration of life and the self, shaped by years of practice, sadhana, time in an ashram and living close to the Ganga in Rishikesh.</p>
     <a class="link" href="about.html">Know more about Mansi {ARROW}</a>
   </div>
   </div>
@@ -549,7 +566,7 @@ about = f"""
     <div class="about-intro">
       <p class="eyebrow">Founder, {NAME}</p>
       <h1>Meet Mansi</h1>
-      <p class="lead">I'm Mansi. My journey with yoga gradually became a deeper exploration of life and the self, shaped by years of practice, sadhana, time in an ashram and living close to the Ganga in Rishikesh.</p>
+      <p class="lead">Namaskaram, I am Mansi. My journey with yoga gradually became a deeper exploration of life and the self, shaped by years of practice, sadhana, time in an ashram and living close to the Ganga in Rishikesh.</p>
       <p>{NAME} was born from a desire to share a little of what this journey has allowed me to experience the essence of yoga beyond the mat, spirituality beyond what we simply read or hear about, and the profound beauty in experiences we often take for granted.</p>
     </div>
   </div>
